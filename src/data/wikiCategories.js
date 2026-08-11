@@ -6,10 +6,22 @@ export const wikiCategories = [
     featuredSlug: "how-to-join-terranova",
   },
   {
-    title: "Worlds, Warps, and Shops",
-    slug: "worlds-warps-shops",
-    description: "Travel, locations, shops, and world navigation.",
-    featuredSlug: "worlds-warps-and-shops",
+    title: "Worlds",
+    slug: "worlds",
+    description: "TerraNova regions, roads, frontiers, and world locations.",
+    featuredSlug: "worlds-overview",
+  },
+  {
+    title: "Warps",
+    slug: "warps",
+    description: "Main gates, Spawn warps, PvP warnings, and copyable commands.",
+    featuredSlug: "warp-overview",
+  },
+  {
+    title: "Shops",
+    slug: "shops",
+    description: "Player shops, public boards, crates, and service locations.",
+    featuredSlug: "shops-overview",
   },
   {
     title: "Items, Souls, and Progression",
@@ -30,4 +42,3 @@ export const wikiCategories = [
     featuredSlug: "updates-and-archive",
   },
 ];
-

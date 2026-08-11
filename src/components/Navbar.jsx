@@ -62,7 +62,7 @@ export default function Navbar() {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/how-to-join">Join</NavLink>
         <NavLink to="/wiki">Wiki</NavLink>
-        <NavLink to="/warps">Warps</NavLink>
+        <NavLink to="/wiki?category=warps&article=warp-overview">Warps</NavLink>
         <NavLink to="/items">Items</NavLink>
         <NavLink to="/events">Events</NavLink>
       </nav>

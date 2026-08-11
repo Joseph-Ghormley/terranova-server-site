@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link, Route, Routes, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, Navigate, Route, Routes, useParams, useSearchParams } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import StatusBadge from "./components/StatusBadge";
@@ -12,7 +12,6 @@ import { wikiCategories } from "./data/wikiCategories";
 import { wikiArticles } from "./data/wikiArticles";
 import { commands } from "./data/commands";
 import { videoGuides } from "./data/videoGuides";
-import { warps } from "./data/warps";
 import { items } from "./data/items";
 
 function PageShell({ eyebrow, title, intro, children }) {
@@ -306,13 +305,18 @@ function CommandList({ commands }) {
 
 function WikiPage() {
   const categories = wikiCategories;
-  const [selectedCategorySlug, setSelectedCategorySlug] = useState(categories[0].slug);
-  const [selectedArticleSlug, setSelectedArticleSlug] = useState(categories[0].featuredSlug);
+  const [searchParams] = useSearchParams();
+  const requestedCategorySlug = searchParams.get("category");
+  const requestedArticleSlug = searchParams.get("article");
+  const initialCategory = categories.find((category) => category.slug === requestedCategorySlug) || categories[0];
+  const [selectedCategorySlug, setSelectedCategorySlug] = useState(initialCategory.slug);
+  const [selectedArticleSlug, setSelectedArticleSlug] = useState(requestedArticleSlug || initialCategory.featuredSlug);
   const selectedCategory =
     categories.find((category) => category.slug === selectedCategorySlug) || categories[0];
   const selectedCategoryArticles = wikiArticles.filter((article) => article.category === selectedCategory.title);
+  const visibleCategoryArticles = selectedCategoryArticles.filter((article) => !article.hideInCategoryList);
   const selectedArticle =
-    wikiArticles.find((article) => article.slug === selectedArticleSlug) ||
+    selectedCategoryArticles.find((article) => article.slug === selectedArticleSlug) ||
     selectedCategoryArticles[0] ||
     wikiArticles[0];
 
@@ -320,6 +324,15 @@ function WikiPage() {
     setSelectedCategorySlug(category.slug);
     setSelectedArticleSlug(category.featuredSlug);
   }
+
+  useEffect(() => {
+    const requestedCategory = categories.find((category) => category.slug === requestedCategorySlug);
+
+    if (requestedCategory) {
+      setSelectedCategorySlug(requestedCategory.slug);
+      setSelectedArticleSlug(requestedArticleSlug || requestedCategory.featuredSlug);
+    }
+  }, [categories, requestedArticleSlug, requestedCategorySlug]);
 
   return (
     <PageShell
@@ -364,7 +377,7 @@ function WikiPage() {
             </div>
             <div className="wiki-section-body">
               <div className="article-card-list">
-                {selectedCategoryArticles.map((article) => (
+                {visibleCategoryArticles.map((article) => (
                   <button
                     className={selectedArticle.slug === article.slug ? "wiki-article-card active" : "wiki-article-card"}
                     type="button"
@@ -398,7 +411,7 @@ function WikiArticleSections({ article, className }) {
   return (
     <article className={className}>
       {article.sections.map((section) => (
-        <section key={section.heading}>
+        <section className={section.type === "group" ? "wiki-article-section group" : "wiki-article-section"} key={section.heading}>
           <h3>{section.heading}</h3>
           {section.commands && (
             <div className="wiki-copy-command-list">
@@ -496,8 +509,8 @@ export default function App() {
         <Route path="/wiki" element={<WikiPage />} />
         <Route path="/wiki/:slug" element={<WikiArticlePage />} />
         <Route path="/how-to-join" element={<HowToJoinPage />} />
-        <Route path="/warps" element={<DirectoryPage eyebrow="Travel" title="Warps" intro="Explore TerraNova's Main City Gate routes, PvP zones, roads, and frontier paths." items={warps} type="warps" />} />
-        <Route path="/warps/:slug" element={<DetailPage collection={warps} eyebrow="Warp Guide" />} />
+        <Route path="/warps" element={<Navigate to="/wiki?category=warps&article=warp-overview" replace />} />
+        <Route path="/warps/:slug" element={<Navigate to="/wiki?category=warps&article=warp-overview" replace />} />
         <Route path="/items" element={<DirectoryPage eyebrow="Progression" title="Items" intro="Custom items and Soul system records will live here as details are verified." items={items} type="items" />} />
         <Route path="/items/:slug" element={<DetailPage collection={items} eyebrow="Item Guide" />} />
         <Route path="/events" element={<DirectoryPage eyebrow="News" title="Events and Updates" intro="Current events, seasonal content, updates, and archives for TerraNova." items={updates} type="events" />} />
