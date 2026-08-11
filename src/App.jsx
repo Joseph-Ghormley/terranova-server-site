@@ -378,14 +378,7 @@ function WikiPage() {
                 ))}
               </div>
 
-              <article className="wiki-inline-article">
-                {selectedArticle.sections.map((section) => (
-                  <section key={section.heading}>
-                    <h3>{section.heading}</h3>
-                    {section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-                  </section>
-                ))}
-              </article>
+              <WikiArticleSections article={selectedArticle} className="wiki-inline-article" />
 
               {selectedCategoryArticles.length === 0 && (
                 <div className="wiki-empty">
@@ -398,6 +391,29 @@ function WikiPage() {
         </section>
       </div>
     </PageShell>
+  );
+}
+
+function WikiArticleSections({ article, className }) {
+  return (
+    <article className={className}>
+      {article.sections.map((section) => (
+        <section key={section.heading}>
+          <h3>{section.heading}</h3>
+          {section.commands && (
+            <div className="wiki-copy-command-list">
+              {section.commands.map((command) => (
+                <div className="wiki-copy-command" key={command}>
+                  <code>{command}</code>
+                  <CopyButton value={command} label="Copy" compact />
+                </div>
+              ))}
+            </div>
+          )}
+          {section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+        </section>
+      ))}
+    </article>
   );
 }
 
@@ -421,12 +437,7 @@ function WikiArticlePage() {
           <StatusBadge status={article.status} />
         </div>
         <div className="wiki-section-body">
-          {article.sections.map((section) => (
-            <section key={section.heading}>
-              <h3>{section.heading}</h3>
-              {section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-            </section>
-          ))}
+          <WikiArticleSections article={article} />
         </div>
       </article>
     </PageShell>
@@ -485,7 +496,7 @@ export default function App() {
         <Route path="/wiki" element={<WikiPage />} />
         <Route path="/wiki/:slug" element={<WikiArticlePage />} />
         <Route path="/how-to-join" element={<HowToJoinPage />} />
-        <Route path="/warps" element={<DirectoryPage eyebrow="Travel" title="Warps" intro="Browse confirmed and draft TerraNova travel points." items={warps} type="warps" />} />
+        <Route path="/warps" element={<DirectoryPage eyebrow="Travel" title="Warps" intro="Explore TerraNova's Main City Gate routes, PvP zones, roads, and frontier paths." items={warps} type="warps" />} />
         <Route path="/warps/:slug" element={<DetailPage collection={warps} eyebrow="Warp Guide" />} />
         <Route path="/items" element={<DirectoryPage eyebrow="Progression" title="Items" intro="Custom items and Soul system records will live here as details are verified." items={items} type="items" />} />
         <Route path="/items/:slug" element={<DetailPage collection={items} eyebrow="Item Guide" />} />

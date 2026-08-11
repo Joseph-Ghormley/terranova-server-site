@@ -18,11 +18,6 @@ export const homeFeatures = [
 
 export const homeNavigationCards = [
   {
-    title: "Worlds and Warps",
-    description: "TerraNova and GreenCliff locations, shops, NPCs, and warps.",
-    route: "/warps",
-  },
-  {
     title: "Items and Progression",
     description: "Souls, custom weapons, armor, potions, relics, and upgrades.",
     route: "/items",
