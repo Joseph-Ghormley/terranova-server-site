@@ -423,6 +423,37 @@ function WikiArticleSections({ article, className }) {
               ))}
             </div>
           )}
+          {section.table && (
+            <div className="wiki-table-wrap">
+              <table className="wiki-data-table">
+                <thead>
+                  <tr>
+                    {section.table.columns.map((column) => (
+                      <th key={column}>{column}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {section.table.rows.map((row, rowIndex) => (
+                    <tr key={`${section.heading}-${rowIndex}`}>
+                      {row.map((cell, cellIndex) => (
+                        <td key={`${section.heading}-${rowIndex}-${cellIndex}`}>
+                          {cellIndex === 0 && cell.startsWith("/") ? (
+                            <span className="wiki-table-command">
+                              <code>{cell}</code>
+                              <CopyButton value={cell} label="Copy" compact />
+                            </span>
+                          ) : (
+                            cell
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
           {section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
         </section>
       ))}

@@ -1589,6 +1589,62 @@ nav a.active {
   overflow-wrap: anywhere;
 }
 
+.wiki-table-wrap {
+  width: 100%;
+  margin: 0.85rem 0 1rem;
+  overflow-x: auto;
+  border: 1px solid rgba(215, 173, 75, 0.22);
+  background: rgba(7, 12, 10, 0.44);
+}
+
+.wiki-data-table {
+  width: 100%;
+  min-width: 44rem;
+  border-collapse: collapse;
+}
+
+.wiki-data-table th,
+.wiki-data-table td {
+  padding: 0.72rem 0.8rem;
+  border-bottom: 1px solid rgba(215, 173, 75, 0.15);
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.45;
+}
+
+.wiki-data-table th {
+  background: rgba(215, 173, 75, 0.1);
+  color: #ffe39a;
+  font-family: "Nunito", sans-serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.wiki-data-table td {
+  color: rgba(251, 242, 218, 0.82);
+}
+
+.wiki-data-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.wiki-table-command {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.65rem;
+  min-width: 13rem;
+}
+
+.wiki-table-command code {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #ffe39a;
+  overflow-wrap: anywhere;
+}
+
 .command-list {
   display: grid;
   gap: 0.5rem;
@@ -1968,6 +2024,15 @@ nav a.active {
 @media (max-width: 620px) {
   .navbar {
     position: sticky;
+  }
+
+  .wiki-data-table {
+    min-width: 38rem;
+  }
+
+  .wiki-table-command {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .header-pills {
