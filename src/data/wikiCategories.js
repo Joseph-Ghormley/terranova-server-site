@@ -3,7 +3,7 @@ export const wikiCategories = [
     title: "Getting Started",
     slug: "getting-started",
     description: "Joining, first steps, and beginner commands.",
-    featuredSlug: "how-to-join-terranova",
+    featuredSlug: "sunny-horizons-network-guide",
   },
   {
     title: "Worlds",
