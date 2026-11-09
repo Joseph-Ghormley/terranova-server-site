@@ -8,6 +8,7 @@ import CopyButton from "./components/CopyButton";
 import { NotFoundPage, PageShell } from "./components/PageShell";
 import { ItemPage, ItemSetPage, ItemsIndexPage } from "./pages/ItemPages";
 import { RulesPage, StaffPage } from "./pages/InfoPages";
+import CombatEffectsPage from "./pages/CombatEffectsPage";
 import { fullName, links, networkName, serverName } from "./data/siteData";
 import { homeNavigationCards } from "./data/homeContent";
 import { updates } from "./data/updates";
@@ -591,6 +592,7 @@ export default function App() {
         <Route path="/warps" element={<Navigate to="/wiki?category=warps&article=warp-overview" replace />} />
         <Route path="/warps/:slug" element={<Navigate to="/wiki?category=warps&article=warp-overview" replace />} />
         <Route path="/items" element={<ItemsIndexPage />} />
+        <Route path="/items/combat-effects" element={<CombatEffectsPage />} />
         <Route path="/items/:setSlug" element={<ItemSetPage />} />
         <Route path="/items/:setSlug/:itemSlug" element={<ItemPage />} />
         <Route path="/events" element={<DirectoryPage eyebrow="News" title="Events and Updates" intro={`Current events, seasonal content, updates, and archives for ${serverName}.`} items={updates} type="events" />} />

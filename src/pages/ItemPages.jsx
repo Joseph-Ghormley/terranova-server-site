@@ -56,6 +56,11 @@ export function ItemsIndexPage() {
         </div>
       )}
 
+      <Link className="card effects-callout" to="/items/combat-effects">
+        <strong>Combat Effects</strong>
+        <span>What Vulnerable, Bleed, Wounded, Enhanced Burn and the K'Thun Mark do.</span>
+      </Link>
+
       {current.length > 0 && <div className="directory-grid">{current.map((set) => <SetCard set={set} key={set.slug} />)}</div>}
 
       {archived.length > 0 && (

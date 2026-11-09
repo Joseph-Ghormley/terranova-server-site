@@ -66,4 +66,17 @@ export const itemSets = [
     archived: false,
     hidden: false,
   },
+  {
+    slug: "summer-2026",
+    name: "Summer 2026",
+    season: "Summer 2026",
+    description: "Sun-themed gear built around being on fire, plus emberglass tools and three summer potions.",
+    notes: [
+      "Many items have an **Aflame bonus**: it turns on while you're **on fire** from any source, or always while you wear the **Crown of Solstice**.",
+      "To survive the fire: **Summer's Crown** gives permanent Fire Resistance, the **Crown of Solstice** blocks fire and burning damage (not lava), and the Valentine's Leggings also make you fire-proof.",
+      "The bold names (Crown of Solstice, Blitzar, Syzygy, Emberglass Rod, Tome of the Stars) are the set's legendary items.",
+    ],
+    archived: false,
+    hidden: false,
+  },
 ];

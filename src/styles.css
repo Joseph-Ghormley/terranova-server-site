@@ -2530,3 +2530,60 @@ nav a.active {
   font-size: 0.8rem;
   font-weight: 800;
 }
+
+/* Combat Effects page and its link on the Items page. */
+.effects-callout {
+  display: grid;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+  border-color: rgba(200, 120, 95, 0.45);
+}
+
+.effects-callout strong {
+  color: var(--danger);
+}
+
+.effects-callout span {
+  color: var(--muted);
+}
+
+.effect-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: 1rem;
+}
+
+.effect-card {
+  scroll-margin-top: 6rem;
+}
+
+.effect-card h2 {
+  color: var(--danger);
+  font-size: 1.3rem;
+}
+
+.effect-card p strong {
+  color: var(--text);
+}
+
+.effect-facts {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.8rem 0 0;
+}
+
+.effect-facts div {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: 0.6rem;
+}
+
+.effect-facts dt {
+  color: var(--gold);
+  font-weight: 900;
+}
+
+.effect-facts dd {
+  margin: 0;
+  color: var(--muted);
+}
