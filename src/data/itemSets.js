@@ -136,4 +136,38 @@ export const itemSets = [
     archived: false,
     hidden: false,
   },
+  {
+    slug: "original-items",
+    name: "Original Items",
+    season: "The originals",
+    description: "The first custom weapons, armor and tools made for the server.",
+    notes: [
+      "The dark red bold names are the legendary pieces.",
+      "Many weapons have **fully charged** abilities: they only trigger on a full-strength swing.",
+    ],
+    archived: false,
+    hidden: false,
+  },
+  {
+    slug: "legendary-components",
+    name: "Legendary Components",
+    season: "Crafting",
+    description: "Rare materials from server events, traded at the Guild Courier for the strongest Glory 9 items.",
+    notes: [
+      "**Glory 9 recipes at the Guild Courier:** Warden Feces + Dragon's Milk = **Regicide** · Beskar + Fugu = **Diabolus Shako** · Magic Conch × 2 = **Aegis Bundle** (Aegis of the Legion + Aegis Spellbook).",
+    ],
+    archived: false,
+    hidden: false,
+  },
+  {
+    slug: "consumables",
+    name: "Consumables",
+    season: "One-use items",
+    description: "Potion books, XP items, combat vials, repair ashes and vouchers. Each one is used up when you use it.",
+    notes: [
+      "Daily Elixirs, Repair Elixirs and Ender Tab Elixirs are explained with their own server systems.",
+    ],
+    archived: false,
+    hidden: false,
+  },
 ];
