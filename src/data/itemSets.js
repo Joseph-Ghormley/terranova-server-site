@@ -112,4 +112,28 @@ export const itemSets = [
     archived: false,
     hidden: false,
   },
+  {
+    slug: "easter-2025",
+    name: "Easter 2025",
+    season: "April 2025",
+    description: "Built around Sacrifice: trade a chunk of your own health to trigger powerful effects from every Easter piece you wear or hold.",
+    notes: [
+      "**How Sacrifice works:** you lose **⅓ of your max health** at once (only **¼** with the Inverse Crown of Thorns), and your saturation drops to 0.",
+      "One Sacrifice triggers **every** Easter piece you're wearing or holding. Trigger it by sneaking in the Thornwoven Trousers, right-clicking Jutranya or Longinus, or left-clicking Zajicklan.",
+      "**Careful: Sacrifice can kill you.** It works at most once per second.",
+    ],
+    archived: false,
+    hidden: false,
+  },
+  {
+    slug: "auction-house",
+    name: "Auction House Items",
+    season: "Auction House",
+    description: "The weapons and armor sold by the Auction House trader, whose stock rotates.",
+    notes: [
+      "The dark red bold names (Aegis of the Legion, K'Thun, Peruun, Yaggagetsu) are the legendary pieces.",
+    ],
+    archived: false,
+    hidden: false,
+  },
 ];

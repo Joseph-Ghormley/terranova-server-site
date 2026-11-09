@@ -299,12 +299,14 @@ export const rules = [
 // minecraftName: optional. When filled in, the page shows that player's Minecraft
 // head. Leave "" to show the first letter of their name instead.
 // handle: optional Discord handle; leave "" to hide it.
+// picture: optional image in public/staff/ (e.g. "/staff/bassor.png"); used before minecraftName.
 export const staff = [
-  { name: "Bassor", role: "Owner", handle: "@Bassor", minecraftName: "", responsibilities: "Vision, server direction, final decisions" },
-  { name: "Kenweas", role: "Developer", handle: "@Kenweas", minecraftName: "", responsibilities: "Custom plugins, the website, testing" },
-  { name: "32BitOsserc", role: "Event Coordinator", handle: "", minecraftName: "", responsibilities: "Plans and runs server events" },
-  { name: "Caitlynn6633", role: "Head Builder", handle: "", minecraftName: "", responsibilities: "Leads the build team: spawn, portals and world design" },
-  { name: "Jade_Savage", role: "Builder", handle: "", minecraftName: "", responsibilities: "Spawn, portals and world design" },
-  { name: "xxDiimplezxx", role: "Builder", handle: "", minecraftName: "", responsibilities: "Spawn, portals and world design" },
-  { name: "Kiermandabomb", role: "Builder", handle: "", minecraftName: "", responsibilities: "Spawn, portals and world design" },
+  { name: "Bassor", role: "Owner", handle: "@Bassor", picture: "/staff/bassor.gif", minecraftName: "", responsibilities: "Vision, server direction, final decisions" },
+  { name: "Kenweas", role: "Developer", handle: "@Kenweas", picture: "/staff/kenweas.gif", minecraftName: "", responsibilities: "Custom plugins, the website, testing" },
+  { name: "KodamaBird", role: "System Admin", handle: "", picture: "/staff/kodamabird.gif", minecraftName: "", responsibilities: "Keeps the server and its systems running" },
+  { name: "Jade_Savage", role: "Admin", handle: "", picture: "/staff/jade_savage.gif", minecraftName: "", responsibilities: "Server operations and player support" },
+  { name: "Caitlynn6633", role: "Building Coordinator", handle: "", picture: "/staff/caitlynn6633.gif", minecraftName: "", responsibilities: "Leads the build team: spawn, portals and world design" },
+  { name: "xxDiimplezxx", role: "Builder", handle: "", picture: "/staff/xxdiimplezxx.gif", minecraftName: "", responsibilities: "Spawn, portals and world design" },
+  { name: "Kiermandabomb", role: "Moderator", handle: "", picture: "/staff/kiermandabomb.gif", minecraftName: "", responsibilities: "Community safety, reports and chat support" },
+  { name: "32BitOsserc", role: "Events Moderator", handle: "", picture: "/staff/32bitosserc.gif", minecraftName: "", responsibilities: "Runs and moderates server events" },
 ];

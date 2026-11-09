@@ -2587,3 +2587,10 @@ nav a.active {
   margin: 0;
   color: var(--muted);
 }
+
+/* Staff profile pictures. */
+.team-picture {
+  border: 1px solid rgba(215, 173, 75, 0.45);
+  background: rgba(215, 173, 75, 0.08);
+  object-fit: contain;
+}

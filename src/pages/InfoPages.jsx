@@ -28,6 +28,9 @@ export function RulesPage() {
 }
 
 function StaffPicture({ member }) {
+  if (member.picture) {
+    return <img className="team-head team-picture" src={member.picture} alt="" width="64" height="64" loading="lazy" />;
+  }
   if (member.minecraftName) {
     // The player's Minecraft head, from their Minecraft username.
     return (
