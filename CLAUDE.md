@@ -54,6 +54,15 @@ All of Bassor's answers (two PDF forms, Nov 9, 2026) are in the claude.ai projec
 - Every update note has a changelog section and a date.
 - Roadmap: hidden for now. Rules page: shown. Staff page: shown (more names coming).
 
+## Planned
+
+- **Site-wide search** (Joseph, Nov 9): one search box in the header for items, wiki guides and update notes. Add it right after the first few item sets of Piece 2, so it's tested with real items.
+- **Package updates:** `npm audit` warns about build tools (Vite, PostCSS, React Router). They don't affect the published pages. Do a small separate piece to update them and test the build. Never `npm audit fix --force`.
+
+## Checking item lore
+
+Before delivering an item set, compare every name and lore line with the plugin's Java code (`getLore()` and `setDisplayName` in the item's file), colors included, with a script, not by eye. Test the script once by breaking a line on purpose. Explanations use the plugin docs' "What it actually does" sections, never "To Review".
+
 ## Source of truth
 
 The private repo `Joseph-Ghormley/JosephsCustomItems` (read only for website work):

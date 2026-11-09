@@ -2218,9 +2218,10 @@ nav a.active {
   image-rendering: pixelated;
 }
 
+/* Regular weight like in game, so a bold (&l) legendary name stands out. */
 .mc-tooltip-name {
   margin-bottom: 0.3rem;
-  font-weight: 800;
+  font-weight: 500;
 }
 
 .mc-tooltip-gap {
@@ -2455,4 +2456,27 @@ nav a.active {
   .footer-links {
     justify-content: flex-start;
   }
+}
+
+/* Item set page: notes for the whole set, and Armor / Weapons / Legendary headings. */
+.item-set-notes {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.1rem 1rem 2.2rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.item-set-notes strong {
+  color: var(--text);
+}
+
+.item-group + .item-group {
+  margin-top: 1.75rem;
+}
+
+.item-group-title {
+  margin-bottom: 0.85rem;
+  color: var(--gold);
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
 }

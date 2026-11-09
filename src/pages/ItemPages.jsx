@@ -78,6 +78,13 @@ export function ItemSetPage() {
   const set = itemSets.find((entry) => entry.slug === setSlug);
   if (!isShown(set)) return <NotFoundPage />;
   const setItems = itemsIn(set);
+  // Items keep their order in items.js; a new heading starts whenever the group changes.
+  const groups = [];
+  for (const item of setItems) {
+    const last = groups[groups.length - 1];
+    if (last && last.name === (item.group || "")) last.items.push(item);
+    else groups.push({ name: item.group || "", items: [item] });
+  }
 
   return (
     <PageShell eyebrow={set.archived ? "Archive" : set.season} title={set.name} intro={set.description}>
@@ -87,8 +94,18 @@ export function ItemSetPage() {
         <span>{set.name}</span>
         <DraftBadge entry={set} />
       </nav>
+      {set.notes && set.notes.length > 0 && (
+        <ul className="card item-set-notes">
+          {set.notes.map((note) => (
+            <li key={note}><RichText text={note} /></li>
+          ))}
+        </ul>
+      )}
+      {groups.map((group) => (
+      <section className="item-group" key={group.name || "items"}>
+      {group.name && <h2 className="item-group-title">{group.name}</h2>}
       <div className="directory-grid">
-        {setItems.map((item) => (
+        {group.items.map((item) => (
           <Link className="link-card item-card" to={`/items/${set.slug}/${item.slug}`} key={item.slug}>
             <span className="card-topline">
               <span>{item.base}</span>
@@ -103,6 +120,8 @@ export function ItemSetPage() {
           </Link>
         ))}
       </div>
+      </section>
+      ))}
     </PageShell>
   );
 }
