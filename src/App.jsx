@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, Navigate, Route, Routes, useParams, useSearchParams } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -7,6 +7,7 @@ import { Card } from "./components/Card";
 import CopyButton from "./components/CopyButton";
 import { NotFoundPage, PageShell } from "./components/PageShell";
 import { ItemPage, ItemSetPage, ItemsIndexPage } from "./pages/ItemPages";
+import { RulesPage, StaffPage } from "./pages/InfoPages";
 import { fullName, links, networkName, serverName } from "./data/siteData";
 import { homeNavigationCards } from "./data/homeContent";
 import { updates } from "./data/updates";
@@ -205,6 +206,8 @@ function HowToJoinPage() {
     >
       <div className="join-grid">
         <Card title="Java Edition" className="join-card">
+          <span className="small-label">Minecraft Version</span>
+          <p className="join-version">{links.javaVersion}</p>
           <span className="small-label">Server Address</span>
           <div className="copy-value-row">
             <code>{links.javaIp}</code>
@@ -212,6 +215,8 @@ function HowToJoinPage() {
           </div>
         </Card>
         <Card title="Bedrock Edition" className="join-card">
+          <span className="small-label">Minecraft Version</span>
+          <p className="join-version">{links.bedrockVersion}</p>
           <span className="small-label">Server Address</span>
           <div className="copy-value-row">
             <code>{links.bedrockIp}</code>
@@ -259,7 +264,7 @@ function HowToJoinPage() {
             ["Server does not appear", "Check that the server address is typed exactly as sunnyhorizons.mc.gg."],
             ["Connection timed out", "Retry after a moment and check whether your network connection is stable."],
             ["Unable to connect", "Confirm you are using the correct platform details for Java or Bedrock."],
-            ["Outdated Minecraft version", "Update Minecraft if your client cannot connect to the server version."],
+            ["Outdated Minecraft version", `Update Minecraft. Supported versions: Java ${links.javaVersion}, Bedrock ${links.bedrockVersion.toLowerCase()}.`],
             ["Microsoft account issues", "Sign out and back into your Microsoft account, then try again."],
             ["Incorrect DNS settings", "Console connection workarounds can depend on DNS settings. Use a confirmed guide before changing them."],
             ["Strict NAT", "A strict NAT can block multiplayer connections. Check your console network status."],
@@ -293,14 +298,13 @@ function CommandList({ commands }) {
 
 function WikiPage() {
   const categories = wikiCategories;
-  const [searchParams] = useSearchParams();
-  const requestedCategorySlug = searchParams.get("category");
-  const requestedArticleSlug = searchParams.get("article");
-  const initialCategory = categories.find((category) => category.slug === requestedCategorySlug) || categories[0];
-  const [selectedCategorySlug, setSelectedCategorySlug] = useState(initialCategory.slug);
-  const [selectedArticleSlug, setSelectedArticleSlug] = useState(requestedArticleSlug || initialCategory.featuredSlug);
+  // The open category and guide come from the page address (?category=...&article=...).
+  // So the menu's Wiki link (/wiki) always opens the first category, the Warps link
+  // always opens Warps, and Back and shared links open the same guide.
+  const [searchParams, setSearchParams] = useSearchParams();
   const selectedCategory =
-    categories.find((category) => category.slug === selectedCategorySlug) || categories[0];
+    categories.find((category) => category.slug === searchParams.get("category")) || categories[0];
+  const selectedArticleSlug = searchParams.get("article") || selectedCategory.featuredSlug;
   const selectedCategoryArticles = wikiArticles.filter((article) => article.category === selectedCategory.title);
   const visibleCategoryArticles = selectedCategoryArticles.filter((article) => !article.hideInCategoryList);
   const selectedArticle =
@@ -310,26 +314,19 @@ function WikiPage() {
   const [query, setQuery] = useState("");
   const searchResults = searchWiki(query);
 
+  function openArticle(category, articleSlug) {
+    setSearchParams(articleSlug ? { category: category.slug, article: articleSlug } : { category: category.slug });
+  }
+
   function openSearchResult(article) {
-    const category = categories.find((entry) => entry.title === article.category);
-    if (category) setSelectedCategorySlug(category.slug);
-    setSelectedArticleSlug(article.slug);
+    const category = categories.find((entry) => entry.title === article.category) || selectedCategory;
+    openArticle(category, article.slug);
     setQuery("");
   }
 
   function selectCategory(category) {
-    setSelectedCategorySlug(category.slug);
-    setSelectedArticleSlug(category.featuredSlug);
+    openArticle(category);
   }
-
-  useEffect(() => {
-    const requestedCategory = categories.find((category) => category.slug === requestedCategorySlug);
-
-    if (requestedCategory) {
-      setSelectedCategorySlug(requestedCategory.slug);
-      setSelectedArticleSlug(requestedArticleSlug || requestedCategory.featuredSlug);
-    }
-  }, [categories, requestedArticleSlug, requestedCategorySlug]);
 
   return (
     <PageShell
@@ -401,7 +398,7 @@ function WikiPage() {
                     className={selectedArticle.slug === article.slug ? "wiki-article-card active" : "wiki-article-card"}
                     type="button"
                     key={article.slug}
-                    onClick={() => setSelectedArticleSlug(article.slug)}
+                    onClick={() => openArticle(selectedCategory, article.slug)}
                   >
                     <span>{article.category}</span>
                     <strong>{article.title}</strong>
@@ -573,6 +570,8 @@ export default function App() {
         <Route path="/wiki" element={<WikiPage />} />
         <Route path="/wiki/:slug" element={<WikiArticlePage />} />
         <Route path="/how-to-join" element={<HowToJoinPage />} />
+        <Route path="/rules" element={<RulesPage />} />
+        <Route path="/staff" element={<StaffPage />} />
         <Route path="/warps" element={<Navigate to="/wiki?category=warps&article=warp-overview" replace />} />
         <Route path="/warps/:slug" element={<Navigate to="/wiki?category=warps&article=warp-overview" replace />} />
         <Route path="/items" element={<ItemsIndexPage />} />

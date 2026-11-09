@@ -6,7 +6,9 @@
 //                "the TerraNova Inn", "the waters of TerraNova"). Kept separate
 //                so the place can keep its name even if the server's changes.
 // When serverName and networkName are the same, fullName shows it once.
-export const serverName = "TerraNova";
+// Bassor's answer (Nov 9, 2026): the server is "Sunny Horizons" (with an s);
+// TerraNova stays only as the spawn city / main world.
+export const serverName = "Sunny Horizons";
 export const networkName = "Sunny Horizons";
 export const homeWorldName = "TerraNova";
 export const fullName = serverName === networkName ? serverName : `${serverName} / ${networkName}`;
@@ -16,9 +18,9 @@ export const links = {
   javaIp: "sunnyhorizons.mc.gg",
   bedrockIp: "sunnyhorizons.mc.gg",
   bedrockPort: "1475",
-  // Supported Minecraft version. Left empty until Bassor confirms it (Piece 1);
-  // nothing on the site shows it while it's empty.
-  version: "",
+  // Supported Minecraft versions (Bassor, Nov 9, 2026). Shown on the Join page.
+  javaVersion: "26.3",
+  bedrockVersion: "Latest version",
   discord: "https://discord.gg/DJP5u28m9k",
   discordMembers: "Discord Community",
   store: "https://sunnyhorizonsmc-store.tebex.io",
@@ -182,6 +184,7 @@ export const featureGroups = [
   },
 ];
 
+// Roadmap: hidden for now (Bassor, Nov 9, 2026). No page shows it.
 export const roadmap = [
   {
     phase: "Foundation",
@@ -228,6 +231,7 @@ export const roadmap = [
   },
 ];
 
+// Rules: shown on the Rules page (/rules). Bassor confirmed they are correct (Nov 9, 2026).
 export const rules = [
   {
     title: "Be Respectful",
@@ -291,12 +295,10 @@ export const rules = [
   },
 ];
 
+// Staff: shown on the Staff page (/staff). From Bassor (Nov 9, 2026); more to come.
+// minecraftName: optional. When filled in, the page shows that player's Minecraft
+// head. Leave "" to show the first letter of their name instead.
 export const staff = [
-  { name: "Name", role: "Owner", handle: "@discord-handle", responsibilities: "Vision, server direction, final decisions" },
-  { name: "Name", role: "Admin", handle: "@discord-handle", responsibilities: "Operations, moderation, player support" },
-  { name: "Name", role: "Developer", handle: "@discord-handle", responsibilities: "Plugin setup, custom systems, testing" },
-  { name: "Name", role: "Builder", handle: "@discord-handle", responsibilities: "Spawn, portals, world presentation" },
-  { name: "Name", role: "Moderator", handle: "@discord-handle", responsibilities: "Community safety, reports, chat support" },
-  { name: "Name", role: "Wiki Editor", handle: "@discord-handle", responsibilities: "Guides, changelogs, documentation" },
-  { name: "Name", role: "Tester", handle: "@discord-handle", responsibilities: "Playtesting, bug reports, feedback" },
+  { name: "Bassor", role: "Owner", handle: "@Bassor", minecraftName: "", responsibilities: "Vision, server direction, final decisions" },
+  { name: "Kenweas", role: "Developer", handle: "@Kenweas", minecraftName: "", responsibilities: "Custom plugins, the website, testing" },
 ];

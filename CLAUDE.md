@@ -8,7 +8,7 @@ The website for the Minecraft server **Sunny Horizon** (it started as TerraNova)
 
 - Hosted on **Netlify**. Pushing to GitHub publishes the site, so **every push is a release**.
 - Only Joseph and Bassor have the link. Nobody else gets it until Bassor says so.
-- Credit **Josoph** (spelled with an O), who wrote the original custom-items plugin.
+- **No Josoph credit on the site** (Bassor said no, Nov 9, 2026). Josoph is credited on GitHub, in the plugin repos. The website is Joseph's. When Bassor answers a question, follow his answer exactly; if he leaves it blank, use the default.
 
 ## Stack and commands
 
@@ -26,7 +26,7 @@ The website for the Minecraft server **Sunny Horizon** (it started as TerraNova)
   - `wikiArticles.js` + `wikiCategories.js`: the wiki.
   - `commands.js`, `homeContent.js`, `warps.js`, `videoGuides.js`.
   - `visibility.js`: the hidden-draft switch.
-- Pages: `src/App.jsx` (home, vote, join, wiki, events), `src/pages/ItemPages.jsx` (items).
+- Pages: `src/App.jsx` (home, vote, join, wiki, events), `src/pages/ItemPages.jsx` (items), `src/pages/InfoPages.jsx` (rules, staff).
 - Components: `src/components/` (`McText` shows Minecraft color codes, `RichText` does **bold** and links in plain-word text, `PageShell` is the page frame).
 
 ## The name
@@ -38,11 +38,21 @@ Never type the server's name into text. Use the settings at the top of `src/data
 - `homeWorldName`: the main world and spawn city, a **place** (TerraNova City, the TerraNova Inn, "the waters of TerraNova").
 - `fullName`: both names, shown once if they're the same.
 
-Open questions for Bassor (Website-Questions-for-Bassor.pdf, sent Nov 8, 2026): "Sunny Horizon" or "Sunny Horizons", and whether TerraNova stays as a place name. Joseph's decision (Nov 8): the site becomes Sunny Horizon. The switch happens in Piece 1, after Bassor answers.
+Bassor's answer (Nov 9, 2026): the server is **Sunny Horizons** (with an s). **TerraNova stays only as the spawn city / main world** (the city, the TerraNova Inn, "the waters of TerraNova").
 
 ## Hidden drafts
 
 `hidden: true` on an item or a set keeps it off the published site. Drafts show with a "Hidden draft" badge in `npm run dev`, or in a build with `VITE_SHOW_DRAFTS=true`. Admin-only items and anything waiting on Bassor stay hidden until he approves them.
+
+## Bassor's decisions
+
+All of Bassor's answers (two PDF forms, Nov 9, 2026) are in the claude.ai project doc `Website-Decisions.md`. Follow his answers exactly; where he left a question blank, use the default. Highlights:
+
+- Item pages: full detail with exact numbers, and "How to get it" on every item. All item groups are shown. No pictures for now.
+- No Josoph credit on the website.
+- A Ranks page lists all ranks together (Ethereal Drifter is one of them, not its own page).
+- Every update note has a changelog section and a date.
+- Roadmap: hidden for now. Rules page: shown. Staff page: shown (more names coming).
 
 ## Source of truth
 
@@ -74,7 +84,7 @@ Never change the plugin repos from website work. If the site and a plugin doc di
 - **Crates:** no crate page until SunnyCrates is live. The features list keeps saying ExcellentCrates until then.
 - **SunnyGhosts:** no page until it's live.
 - **Unreleased:** the Huntsman Knife, plugin versions 1.7, 1.8 and 1.9, and Bassor's new concepts.
-- **Admin-only items** (like the Tools): hidden drafts until Bassor decides.
+- **The Roadmap:** hidden until Bassor updates it.
 
 ## How we work (strict)
 

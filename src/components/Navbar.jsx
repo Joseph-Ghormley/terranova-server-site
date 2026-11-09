@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { links, serverName } from "../data/siteData";
 import logoImage from "../assets/sunny-horizons-logo.jpg";
 
@@ -22,6 +22,11 @@ function PillIcon({ type }) {
 
 export default function Navbar() {
   const [copied, setCopied] = useState(false);
+  // Warps is a section of the wiki, so the two menu links share one page.
+  // Light up Warps only in the Warps section, and Wiki everywhere else in the wiki.
+  const location = useLocation();
+  const onWiki = location.pathname === "/wiki" || location.pathname.startsWith("/wiki/");
+  const inWarps = onWiki && new URLSearchParams(location.search).get("category") === "warps";
 
   const copyIp = async () => {
     try {
@@ -61,10 +66,11 @@ export default function Navbar() {
       <nav aria-label="Primary navigation">
         <NavLink to="/">Home</NavLink>
         <NavLink to="/how-to-join">Join</NavLink>
-        <NavLink to="/wiki">Wiki</NavLink>
-        <NavLink to="/wiki?category=warps&article=warp-overview">Warps</NavLink>
+        <NavLink to="/wiki" className={() => (onWiki && !inWarps ? "active" : "")}>Wiki</NavLink>
+        <NavLink to="/wiki?category=warps&article=warp-overview" className={() => (inWarps ? "active" : "")}>Warps</NavLink>
         <NavLink to="/items">Items</NavLink>
         <NavLink to="/events">Events</NavLink>
+        <NavLink to="/rules">Rules</NavLink>
       </nav>
     </header>
   );
