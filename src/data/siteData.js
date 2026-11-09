@@ -302,6 +302,7 @@ export const rules = [
 export const staff = [
   { name: "Bassor", role: "Owner", handle: "@Bassor", minecraftName: "", responsibilities: "Vision, server direction, final decisions" },
   { name: "Kenweas", role: "Developer", handle: "@Kenweas", minecraftName: "", responsibilities: "Custom plugins, the website, testing" },
+  { name: "32BitOsserc", role: "Event Coordinator", handle: "", minecraftName: "", responsibilities: "Plans and runs server events" },
   { name: "Caitlynn6633", role: "Head Builder", handle: "", minecraftName: "", responsibilities: "Leads the build team: spawn, portals and world design" },
   { name: "Jade_Savage", role: "Builder", handle: "", minecraftName: "", responsibilities: "Spawn, portals and world design" },
   { name: "xxDiimplezxx", role: "Builder", handle: "", minecraftName: "", responsibilities: "Spawn, portals and world design" },

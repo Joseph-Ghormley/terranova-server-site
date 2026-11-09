@@ -4,7 +4,7 @@ export const videoGuides = [
     slug: "xbox-connection-guide",
     platform: "Xbox",
     description: "Watch this video to join the server from an Xbox.",
-    videoUrl: "https://www.youtube.com/watch?v=nq7gKP7fVvg",
+    videoUrl: "https://www.youtube.com/watch?v=r4oEsgdlckw",
     status: "Active",
   },
   {

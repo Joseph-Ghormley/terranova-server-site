@@ -79,4 +79,37 @@ export const itemSets = [
     archived: false,
     hidden: false,
   },
+  {
+    slug: "valentines-2025",
+    name: "Valentines 2025",
+    season: "February 2025",
+    description: "A gold armor set packed with extra hearts, a blinding mask, an explosive elytra, a backstab sword and a bleeding bow.",
+    notes: [
+      "The items' gold tag in game says **Valentines 2026**.",
+      "The bold names (Mask of Devotion, Lover's Flight, Flaminia) are the set's legendary items.",
+    ],
+    archived: false,
+    hidden: false,
+  },
+  {
+    slug: "christmas-2025",
+    name: "Christmas 2025",
+    season: "December 2025",
+    description: "A cozy four-piece leather set full of extra hearts, and the Mistericorde, a sword that shuts down healing.",
+    notes: [],
+    archived: false,
+    hidden: false,
+  },
+  {
+    slug: "spooky",
+    name: "Spooky (Halloween)",
+    season: "Halloween 2024–2025",
+    description: "Halloween gear: the four-piece chainmail Spooky set, three Pumpkin King pieces and the Grave Digger's Shovel.",
+    notes: [
+      "The Spooky Chestplate takes away 5 hearts and the Spooky Leggings add 5, so wearing both evens out.",
+      "The bold names (Mask of Infamy, Cloak of the Pumpkin King, Onyx Reaver) are the Pumpkin King's legendary pieces.",
+    ],
+    archived: false,
+    hidden: false,
+  },
 ];
