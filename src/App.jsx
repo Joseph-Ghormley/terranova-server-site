@@ -5,27 +5,15 @@ import Footer from "./components/Footer";
 import StatusBadge from "./components/StatusBadge";
 import { Card } from "./components/Card";
 import CopyButton from "./components/CopyButton";
-import { links } from "./data/siteData";
+import { NotFoundPage, PageShell } from "./components/PageShell";
+import { ItemPage, ItemSetPage, ItemsIndexPage } from "./pages/ItemPages";
+import { fullName, links, networkName, serverName } from "./data/siteData";
 import { homeNavigationCards } from "./data/homeContent";
 import { updates } from "./data/updates";
 import { wikiCategories } from "./data/wikiCategories";
 import { wikiArticles } from "./data/wikiArticles";
 import { commands } from "./data/commands";
 import { videoGuides } from "./data/videoGuides";
-import { items } from "./data/items";
-
-function PageShell({ eyebrow, title, intro, children }) {
-  return (
-    <main className="page">
-      <section className="page-header">
-        <p className="eyebrow">{eyebrow}</p>
-        <h1>{title}</h1>
-        <p>{intro}</p>
-      </section>
-      {children}
-    </main>
-  );
-}
 
 function PortalIcon({ name }) {
   const paths = {
@@ -110,7 +98,7 @@ function HomePage() {
     {
       id: "vote",
       label: "Vote",
-      text: "Vote for Sunny Horizons and claim player rewards.",
+      text: `Vote for ${networkName} and claim player rewards.`,
       href: "/vote",
       accent: "#75c987",
     },
@@ -126,10 +114,10 @@ function HomePage() {
   return (
     <main className="home-portal expanded-home">
       <section className="portal-hero" aria-labelledby="portal-title">
-        <p className="eyebrow">Sunny Horizons Network</p>
-        <h1 id="portal-title">TerraNova</h1>
+        <p className="eyebrow">{networkName} Network</p>
+        <h1 id="portal-title">{serverName}</h1>
         <p className="portal-tagline">
-          Stake your claim beneath a brighter sky, build your story, and find your way through Sunny Horizons.
+          Stake your claim beneath a brighter sky, build your story, and find your way through {networkName}.
         </p>
         <div className="portal-card-grid">
           {portalCards.map((card) => (
@@ -150,7 +138,7 @@ function HomePage() {
       <section className="home-section compact-explore" aria-labelledby="explore-title">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Explore TerraNova</p>
+            <p className="eyebrow">Explore {serverName}</p>
             <h2 id="explore-title">Where Do You Want to Go?</h2>
           </div>
         </div>
@@ -178,7 +166,7 @@ function VotePage() {
   return (
     <PageShell
       eyebrow="Daily Rewards"
-      title="Vote for Sunny Horizons"
+      title={`Vote for ${networkName}`}
       intro="Support the server on voting sites, then return in-game to claim the rewards tied to voting and Vote crates."
     >
       <div className="vote-page-grid">
@@ -186,7 +174,7 @@ function VotePage() {
           <SmartLink className="vote-link-card" href={url} key={url}>
             <span>Vote Site</span>
             <strong>{title}</strong>
-            <p>Vote for TerraNova / Sunny Horizons.</p>
+            <p>Vote for {fullName}.</p>
             <small>{url.replace("https://", "")}</small>
           </SmartLink>
         ))}
@@ -212,8 +200,8 @@ function HowToJoinPage() {
   return (
     <PageShell
       eyebrow="Connection Guide"
-      title="How to Join TerraNova"
-      intro="Start your TerraNova adventure on Java or Bedrock Edition. Copy the details for your platform, then use the beginner commands once you arrive."
+      title={`How to Join ${serverName}`}
+      intro={`Start your ${serverName} adventure on Java or Bedrock Edition. Copy the details for your platform, then use the beginner commands once you arrive.`}
     >
       <div className="join-grid">
         <Card title="Java Edition" className="join-card">
@@ -275,7 +263,7 @@ function HowToJoinPage() {
             ["Microsoft account issues", "Sign out and back into your Microsoft account, then try again."],
             ["Incorrect DNS settings", "Console connection workarounds can depend on DNS settings. Use a confirmed guide before changing them."],
             ["Strict NAT", "A strict NAT can block multiplayer connections. Check your console network status."],
-            ["Server temporarily offline", "If the server is offline, wait for an update from the TerraNova community."],
+            ["Server temporarily offline", `If the server is offline, wait for an update from the ${serverName} community.`],
           ].map(([title, text]) => (
             <details className="wiki-accordion nested" key={title}>
               <summary>{title}</summary>
@@ -319,6 +307,15 @@ function WikiPage() {
     selectedCategoryArticles.find((article) => article.slug === selectedArticleSlug) ||
     selectedCategoryArticles[0] ||
     wikiArticles[0];
+  const [query, setQuery] = useState("");
+  const searchResults = searchWiki(query);
+
+  function openSearchResult(article) {
+    const category = categories.find((entry) => entry.title === article.category);
+    if (category) setSelectedCategorySlug(category.slug);
+    setSelectedArticleSlug(article.slug);
+    setQuery("");
+  }
 
   function selectCategory(category) {
     setSelectedCategorySlug(category.slug);
@@ -337,15 +334,37 @@ function WikiPage() {
   return (
     <PageShell
       eyebrow="Knowledge Base"
-      title="TerraNova Wiki"
-      intro="Official player guides for Sunny Horizons. Pick a category from the left, then open the focused article you need."
+      title={`${serverName} Wiki`}
+      intro={`Official player guides for ${networkName}. Pick a category from the left, then open the focused article you need.`}
     >
       <div className="wiki-layout">
         <aside className="wiki-sidebar">
           <label className="wiki-search">
             <span>Search Wiki</span>
-            <input type="search" placeholder="Search join, warp, soul..." />
+            <input
+              type="search"
+              placeholder="Search join, warp, soul..."
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+            />
           </label>
+          {query.trim() && (
+            <div className="wiki-search-results" aria-live="polite">
+              <div className="wiki-sidebar-heading">
+                <strong>Search Results</strong>
+                <small>{searchResults.length} found</small>
+              </div>
+              {searchResults.length === 0 && <p className="wiki-search-empty">No guides match that search.</p>}
+              <nav aria-label="Wiki search results" className="wiki-category-list">
+                {searchResults.map((article) => (
+                  <button type="button" key={article.slug} onClick={() => openSearchResult(article)}>
+                    <span>{article.title}</span>
+                    <small>{article.category}</small>
+                  </button>
+                ))}
+              </nav>
+            </div>
+          )}
           <div className="wiki-sidebar-heading">
             <strong>Guide Categories</strong>
             <small>{categories.length} shown</small>
@@ -396,7 +415,7 @@ function WikiPage() {
               {selectedCategoryArticles.length === 0 && (
                 <div className="wiki-empty">
                   <h3>No guides added yet</h3>
-                  <p>This category is ready for future TerraNova documentation.</p>
+                  <p>This category is ready for future {serverName} documentation.</p>
                 </div>
               )}
             </div>
@@ -405,6 +424,28 @@ function WikiPage() {
       </div>
     </PageShell>
   );
+}
+
+// Every word in the search must appear somewhere in the guide.
+function searchWiki(query) {
+  const words = query.toLowerCase().split(/\s+/).filter(Boolean);
+  if (words.length === 0) return [];
+  return wikiArticles.filter((article) => {
+    const text = [
+      article.title,
+      article.summary,
+      article.category,
+      ...(article.sections || []).flatMap((section) => [
+        section.heading,
+        ...(section.body || []),
+        ...(section.commands || []),
+        ...(section.table ? section.table.rows.flat() : []),
+      ]),
+    ]
+      .join(" ")
+      .toLowerCase();
+    return words.every((word) => text.includes(word));
+  });
 }
 
 function WikiArticleSections({ article, className }) {
@@ -522,14 +563,6 @@ function DetailPage({ collection, eyebrow }) {
   );
 }
 
-function NotFoundPage() {
-  return (
-    <PageShell eyebrow="Missing Page" title="Guide Not Found" intro="That TerraNova page is not available yet.">
-      <Link className="btn primary" to="/">Return Home</Link>
-    </PageShell>
-  );
-}
-
 export default function App() {
   return (
     <>
@@ -542,11 +575,12 @@ export default function App() {
         <Route path="/how-to-join" element={<HowToJoinPage />} />
         <Route path="/warps" element={<Navigate to="/wiki?category=warps&article=warp-overview" replace />} />
         <Route path="/warps/:slug" element={<Navigate to="/wiki?category=warps&article=warp-overview" replace />} />
-        <Route path="/items" element={<DirectoryPage eyebrow="Progression" title="Items" intro="Custom items and Soul system records will live here as details are verified." items={items} type="items" />} />
-        <Route path="/items/:slug" element={<DetailPage collection={items} eyebrow="Item Guide" />} />
-        <Route path="/events" element={<DirectoryPage eyebrow="News" title="Events and Updates" intro="Current events, seasonal content, updates, and archives for TerraNova." items={updates} type="events" />} />
+        <Route path="/items" element={<ItemsIndexPage />} />
+        <Route path="/items/:setSlug" element={<ItemSetPage />} />
+        <Route path="/items/:setSlug/:itemSlug" element={<ItemPage />} />
+        <Route path="/events" element={<DirectoryPage eyebrow="News" title="Events and Updates" intro={`Current events, seasonal content, updates, and archives for ${serverName}.`} items={updates} type="events" />} />
         <Route path="/events/:slug" element={<DetailPage collection={updates} eyebrow="Event Update" />} />
-        <Route path="/updates" element={<DirectoryPage eyebrow="News" title="Events and Updates" intro="Current events, seasonal content, updates, and archives for TerraNova." items={updates} type="events" />} />
+        <Route path="/updates" element={<DirectoryPage eyebrow="News" title="Events and Updates" intro={`Current events, seasonal content, updates, and archives for ${serverName}.`} items={updates} type="events" />} />
         <Route path="/updates/:slug" element={<DetailPage collection={updates} eyebrow="Event Update" />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

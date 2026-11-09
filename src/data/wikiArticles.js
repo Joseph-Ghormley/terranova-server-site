@@ -1,8 +1,10 @@
+import { homeWorldName, networkName, serverName } from "./siteData";
+
 const mainCityGateSections = [
   {
     heading: "Main City Gate Warps",
     type: "group",
-    body: ["The Main City gates are the core travel routes out of TerraNova. Each gate leads toward a different type of adventure, from PvP arenas to frontier roads and wilderness settlement paths."],
+    body: [`The Main City gates are the core travel routes out of ${homeWorldName}. Each gate leads toward a different type of adventure, from PvP arenas to frontier roads and wilderness settlement paths.`],
   },
   {
     heading: "/warp NorthGate",
@@ -30,7 +32,7 @@ const importantSpawnWarpSections = [
   {
     heading: "Important Spawn Warps",
     type: "group",
-    body: ["These Spawn warps lead to key services, shops, crates, guild resources, gathering spots, and higher-risk areas around TerraNova."],
+    body: [`These Spawn warps lead to key services, shops, crates, guild resources, gathering spots, and higher-risk areas around ${homeWorldName}.`],
   },
   {
     heading: "/warp AuctionHouse",
@@ -65,7 +67,7 @@ const importantSpawnWarpSections = [
   {
     heading: "/warp Harbor",
     commands: ["/warp Harbor"],
-    body: ["The Harbor is the bustling shipyard of TerraNova, where sailors, merchants, and adventurers gather before setting out across the realm. Among the vessels in port, keep an eye out for the Wandering Trader’s Ship, captained by none other than Captain Red. His ship is always worth seeking out"],
+    body: [`The Harbor is the bustling shipyard of ${homeWorldName}, where sailors, merchants, and adventurers gather before setting out across the realm. Among the vessels in port, keep an eye out for the Wandering Trader’s Ship, captained by none other than Captain Red. His ship is always worth seeking out`],
   },
   {
     heading: "/warp HuntedsInn",
@@ -75,17 +77,17 @@ const importantSpawnWarpSections = [
   {
     heading: "/warp Inn",
     commands: ["/warp Inn"],
-    body: ["The TerraNova Inn is the city’s main gathering place for travelers seeking a warm bed, a quiet rest, or perhaps a little bit of luck. Take a moment to rest your feet and explore the Aura Crate, where you can try your luck at winning unique cosmetic auras to make your adventurer stand out from the crowd. The inn is also home to a mysterious Traveling Magician, who has brought with him a collection of Invisible Item Frames—perfect for displaying your prized possessions without distracting from your builds."],
+    body: [`The ${homeWorldName} Inn is the city’s main gathering place for travelers seeking a warm bed, a quiet rest, or perhaps a little bit of luck. Take a moment to rest your feet and explore the Aura Crate, where you can try your luck at winning unique cosmetic auras to make your adventurer stand out from the crowd. The inn is also home to a mysterious Traveling Magician, who has brought with him a collection of Invisible Item Frames—perfect for displaying your prized possessions without distracting from your builds.`],
   },
   {
     heading: "/warp MountGundalar",
     commands: ["/warp MountGundalar"],
-    body: ["The Mount Gündelar is home to an ancient Dwarven mining civilization whose tunnels and halls were carved deep into the mountain long before the Kingdom of TerraNova ever existed. The forgotten mines run deep beneath the mountain, filled with remnants of a lost age, hidden treasures, and secrets waiting to be uncovered. It is a perfect destination for those seeking adventure, valuable loot, and the thrill of exploring the unknown."],
+    body: [`The Mount Gündelar is home to an ancient Dwarven mining civilization whose tunnels and halls were carved deep into the mountain long before the Kingdom of ${homeWorldName} ever existed. The forgotten mines run deep beneath the mountain, filled with remnants of a lost age, hidden treasures, and secrets waiting to be uncovered. It is a perfect destination for those seeking adventure, valuable loot, and the thrill of exploring the unknown.`],
   },
   {
     heading: "/warp PetShop",
     commands: ["/warp PetShop"],
-    body: ["The Pet Shop is the perfect place to find a new companion for your adventures across TerraNova. Step inside to browse a selection of spawn eggs and choose a creature to call your own. Whether you’re looking for a loyal companion or simply want to add a little more life to your home, there’s always a new friend waiting to be found."],
+    body: [`The Pet Shop is the perfect place to find a new companion for your adventures across ${homeWorldName}. Step inside to browse a selection of spawn eggs and choose a creature to call your own. Whether you’re looking for a loyal companion or simply want to add a little more life to your home, there’s always a new friend waiting to be found.`],
   },
   {
     heading: "/warp PotionShop",
@@ -95,7 +97,7 @@ const importantSpawnWarpSections = [
   {
     heading: "/warp Shops",
     commands: ["/warp Shops"],
-    body: ["The Shops District is where merchants and entrepreneurs come together to grow their businesses across TerraNova. Here, you’ll find Public Notice Boards where you can advertise your player shop and share its teleport location with other adventurers. Looking to open a shop of your own? Visit the local Master Shopkeeper to purchase your very own Player Shop Egg and begin building your merchant empire."],
+    body: [`The Shops District is where merchants and entrepreneurs come together to grow their businesses across ${homeWorldName}. Here, you’ll find Public Notice Boards where you can advertise your player shop and share its teleport location with other adventurers. Looking to open a shop of your own? Visit the local Master Shopkeeper to purchase your very own Player Shop Egg and begin building your merchant empire.`],
   },
   {
     heading: "/warp Slums",
@@ -110,16 +112,16 @@ const importantSpawnWarpSections = [
   {
     heading: "/warp TownSquare",
     commands: ["/warp TownSquare"],
-    body: ["The Town Square brings you right to the heart of TerraNova, where the city’s many happenings come together. This lively gathering place is where adventurers meet, celebrations unfold, and the community comes together—especially during seasonal events, when the square transforms into the center of the festivities."],
+    body: [`The Town Square brings you right to the heart of ${homeWorldName}, where the city’s many happenings come together. This lively gathering place is where adventurers meet, celebrations unfold, and the community comes together—especially during seasonal events, when the square transforms into the center of the festivities.`],
   },
 ];
 
 export const wikiArticles = [
   {
-    title: "How to Join TerraNova",
+    title: `How to Join ${serverName}`,
     slug: "how-to-join-terranova",
     category: "Getting Started",
-    summary: "Java and Bedrock connection details for TerraNova.",
+    summary: `Java and Bedrock connection details for ${serverName}.`,
     status: "Active",
     sections: [
       {
@@ -146,7 +148,7 @@ export const wikiArticles = [
       {
         heading: "Bedrock Edition Players (Geyser Support)",
         body: [
-          "Sunny Horizons Network primarily runs on Minecraft Java Edition, but Bedrock Edition players can join using Geyser.",
+          `${networkName} Network primarily runs on Minecraft Java Edition, but Bedrock Edition players can join using Geyser.`,
           "Most features work normally, but because the server is designed for Java Edition, Bedrock players may encounter some limitations depending on their device or platform.",
         ],
       },
@@ -181,7 +183,7 @@ export const wikiArticles = [
       {
         heading: "General Compatibility",
         body: [
-          "Because Sunny Horizons is built for Java Edition, some mechanics or interfaces may behave slightly differently for Bedrock players depending on:",
+          `Because ${networkName} is built for Java Edition, some mechanics or interfaces may behave slightly differently for Bedrock players depending on:`,
           "● Console vs mobile vs PC",
           "● Bedrock client version",
           "● Geyser compatibility",
@@ -191,22 +193,22 @@ export const wikiArticles = [
     ],
   },
   {
-    title: "Sunny Horizons Network Guide",
+    title: `${networkName} Network Guide`,
     slug: "sunny-horizons-network-guide",
     category: "Getting Started",
-    summary: "From the Heart of TerraNova to the Heights of GreenCliff | One Network – Endless Horizons",
+    summary: `From the Heart of ${homeWorldName} to the Heights of GreenCliff | One Network – Endless Horizons`,
     status: "Active",
     hideInCategoryList: true,
     sections: [
       {
-        heading: "Welcome to Sunny Horizons Network!",
+        heading: `Welcome to ${networkName} Network!`,
         body: ["This guide will help you understand the basics of the server so you can begin your adventure quickly and confidently."],
       },
       {
-        heading: "Starting Out in TerraNova",
+        heading: `Starting Out in ${homeWorldName}`,
         body: [
-          "When you first join the server, you will spawn in TerraNova City, the central hub of the network.",
-          "TerraNova is the heart of the community and the main gathering place where:",
+          `When you first join the server, you will spawn in ${homeWorldName} City, the central hub of the network.`,
+          `${homeWorldName} is the heart of the community and the main gathering place where:`,
           "● Community events take place",
           "● Players meet and trade",
           "● Shops and services are located",
@@ -216,15 +218,15 @@ export const wikiArticles = [
       {
         heading: "Loot Around the City",
         body: [
-          "As a new player, exploring TerraNova can be very rewarding. Many containers around the city regenerate loot, which can provide useful starter items early in your journey.",
+          `As a new player, exploring ${homeWorldName} can be very rewarding. Many containers around the city regenerate loot, which can provide useful starter items early in your journey.`,
           "Take some time to explore — you may find helpful gear or server currency to get started.",
         ],
       },
       {
         heading: "Server Currency",
         body: [
-          "Sunny Horizons uses a custom item based currency system that players can earn entirely in game.",
-          "Most shops in TerraNova use two types of currency:",
+          `${networkName} uses a custom item based currency system that players can earn entirely in game.`,
+          `Most shops in ${homeWorldName} use two types of currency:`,
         ],
       },
       {
@@ -249,7 +251,7 @@ export const wikiArticles = [
       {
         heading: "Free to Play Economy",
         body: [
-          "TerraNova is completely free to play.",
+          `${serverName} is completely free to play.`,
           "All currency and items can be earned through gameplay without spending real money. However, players can choose to support server development through the website store.",
         ],
       },
@@ -260,7 +262,7 @@ export const wikiArticles = [
           "● Voting for the server daily",
           "● Participating in Pinata Party",
           "● Finding loot in the wild",
-          "● Exploring TerraNova",
+          `● Exploring ${homeWorldName}`,
           "● Participating in server events",
           "● Trading with other players",
           "● Using player shops",
@@ -309,7 +311,7 @@ export const wikiArticles = [
       {
         heading: "Returning to Spawn",
         commands: ["/spawn"],
-        body: ["/spawn Teleport back to TerraNova City at any time."],
+        body: [`/spawn Teleport back to ${homeWorldName} City at any time.`],
       },
       {
         heading: "GreenCliff",
@@ -324,7 +326,7 @@ export const wikiArticles = [
         heading: "Chat System",
         commands: ["/chat greencliff"],
         body: [
-          "When you join the server you are automatically placed in Global Chat, which includes players from both TerraNova and GreenCliff.",
+          `When you join the server you are automatically placed in Global Chat, which includes players from both ${homeWorldName} and GreenCliff.`,
           "If you are playing on GreenCliff and would prefer to only see that server’s chat, you can switch channels:",
         ],
       },
@@ -334,7 +336,7 @@ export const wikiArticles = [
         body: [
           "You can teleport to important locations around the server using the warp system.",
           "Command:",
-          "Warps exist across TerraNova and GreenCliff for important locations, shops, and features.",
+          `Warps exist across ${homeWorldName} and GreenCliff for important locations, shops, and features.`,
           "(A full list of warps will be provided in the table below.)",
         ],
       },
@@ -357,7 +359,7 @@ export const wikiArticles = [
       {
         heading: "Land Claiming",
         body: [
-          "Sunny Horizons uses the Lands plugin for land protection.",
+          `${networkName} uses the Lands plugin for land protection.`,
           "Players can claim land to protect their builds and control who can interact with their property.",
           "For detailed instructions on claiming land and managing permissions, please see the Land Claiming Guide page.",
         ],
@@ -390,12 +392,12 @@ export const wikiArticles = [
     title: "Worlds Overview",
     slug: "worlds-overview",
     category: "Worlds",
-    summary: "A quick guide to Sunny Horizons' worlds, dimensions, and unique destinations.",
+    summary: `A quick guide to ${networkName}' worlds, dimensions, and unique destinations.`,
     status: "Active",
     sections: [
       {
         heading: "Worlds & Dimensions",
-        body: ["A quick guide to Sunny Horizons' worlds, dimensions, and unique destinations. Whether you're looking to explore the main world, visit a community-built realm, or take part in seasonal events, there's always somewhere new to discover."],
+        body: [`A quick guide to ${networkName}' worlds, dimensions, and unique destinations. Whether you're looking to explore the main world, visit a community-built realm, or take part in seasonal events, there's always somewhere new to discover.`],
       },
       {
         heading: "Main Worlds",
@@ -403,15 +405,15 @@ export const wikiArticles = [
         body: [],
       },
       {
-        heading: "TerraNova",
+        heading: `${homeWorldName}`,
         body: [
-          "TerraNova is the main world of Sunny Horizons and the home of Spawn City, serving as the central hub of the server.",
+          `${homeWorldName} is the main world of ${networkName} and the home of Spawn City, serving as the central hub of the server.`,
           "This is where you'll find the heart of the server, including shops, public areas, player activity, and the roads leading out into the wider world.",
-          "TerraNova has its own Nether and End dimensions, allowing players to travel between all three dimensions as part of the main world.",
+          `${homeWorldName} has its own Nether and End dimensions, allowing players to travel between all three dimensions as part of the main world.`,
           "Dimensions:",
-          "● Overworld — TerraNova",
-          "● Nether — TerraNova Nether",
-          "● End — TerraNova End",
+          `● Overworld — ${homeWorldName}`,
+          `● Nether — ${homeWorldName} Nether`,
+          `● End — ${homeWorldName} End`,
         ],
       },
       {
@@ -432,7 +434,7 @@ export const wikiArticles = [
         heading: "Winter Wonderland",
         commands: ["/warp WinterWonderland"],
         body: [
-          "Winter Wonderland is the home of Sunny Horizons' Christmas and holiday festivities.",
+          `Winter Wonderland is the home of ${networkName}' Christmas and holiday festivities.`,
           "During the holiday season, this world comes alive with seasonal events, activities, decorations, and plenty of holiday-themed shops to explore.",
           "It's the perfect place to get into the holiday spirit and take part in the server's Christmas celebrations.",
           "How to get there: /warp WinterWonderland",
@@ -454,7 +456,7 @@ export const wikiArticles = [
     sections: [
       {
         heading: "How Warps Are Organized",
-        body: ["Warps are split into Main City Gate Warps for leaving TerraNova through major roads and Important Spawn Warps for shops, services, crates, guild resources, and key city locations."],
+        body: [`Warps are split into Main City Gate Warps for leaving ${homeWorldName} through major roads and Important Spawn Warps for shops, services, crates, guild resources, and key city locations.`],
       },
       {
         heading: "Main City Gate Warps",
@@ -486,14 +488,14 @@ export const wikiArticles = [
     title: "Shops Overview",
     slug: "shops-overview",
     category: "Shops",
-    summary: "A guide to TerraNova shops, public boards, crates, and service locations.",
+    summary: `A guide to ${homeWorldName} shops, public boards, crates, and service locations.`,
     status: "Active",
     sections: [
       {
         heading: "Shops Overview",
         body: [
-          "A guide to TerraNova shops, public boards, crates, and service locations.",
-          "TerraNova is home to a variety of shops and services, from player-owned businesses to server-operated shops found throughout Spawn and beyond.",
+          `A guide to ${homeWorldName} shops, public boards, crates, and service locations.`,
+          `${homeWorldName} is home to a variety of shops and services, from player-owned businesses to server-operated shops found throughout Spawn and beyond.`,
           "Whether you're looking to sell your own goods, stock up on building supplies, or find something rare, there are plenty of places to explore.",
         ],
       },
@@ -527,7 +529,7 @@ export const wikiArticles = [
       {
         heading: "Server Shops",
         body: [
-          "Server Shops are operated by the server and can be found throughout TerraNova Spawn and other worlds.",
+          `Server Shops are operated by the server and can be found throughout ${homeWorldName} Spawn and other worlds.`,
           "These shopkeepers offer a variety of useful items, supplies, and services with set server trades.",
           "Unlike player shops, Server Shops are not owned or operated by individual players and are available as permanent locations for players to purchase the items they need.",
           "Below you'll find the different Server Shopkeeper categories, along with information about their locations and available trades.",
@@ -635,7 +637,7 @@ export const wikiArticles = [
       {
         heading: "Guild Events",
         body: [
-          "Guilds can compete in special events throughout TerraNova. These events put Guilds against one another for rewards, recognition, and Guild Glory.",
+          `Guilds can compete in special events throughout ${homeWorldName}. These events put Guilds against one another for rewards, recognition, and Guild Glory.`,
           "Currently, there are two Guild Events, with more planned for the future.",
           "Plunder and Prowl alternate between each other and take place at 7:00 PM PST.",
         ],
@@ -643,7 +645,7 @@ export const wikiArticles = [
       {
         heading: "Plunder",
         body: [
-          "“The waters of TerraNova give freely to those willing to cast their nets. But what is caught belongs only to those strong enough to keep it.” — Book of Forgotten Memories",
+          `“The waters of ${homeWorldName} give freely to those willing to cast their nets. But what is caught belongs only to those strong enough to keep it.” — Book of Forgotten Memories`,
           "Plunder is a Guild fishing competition where Guilds compete to catch the most fish while defending their haul from rival Guilds.",
         ],
       },
@@ -744,7 +746,7 @@ export const wikiArticles = [
     title: "Updates and Archive",
     slug: "updates-and-archive",
     category: "Updates and Archive",
-    summary: "Seasonal and archived TerraNova update notes.",
+    summary: `Seasonal and archived ${serverName} update notes.`,
     status: "Needs Verification",
     sections: [
       {

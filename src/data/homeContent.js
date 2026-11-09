@@ -1,3 +1,5 @@
+import { homeWorldName } from "./siteData";
+
 export const homeFeatures = [
   {
     kicker: "Progression",
@@ -12,7 +14,7 @@ export const homeFeatures = [
   {
     kicker: "Worlds",
     title: "Worlds and Adventures",
-    description: "Explore TerraNova, GreenCliff, custom locations, and seasonal events.",
+    description: `Explore ${homeWorldName}, GreenCliff, custom locations, and seasonal events.`,
   },
 ];
 

@@ -1,29 +1,19 @@
-# TerraNova Server Hub
+# Sunny Horizon Server Hub
 
-A React and Vite website for the TerraNova Minecraft server project.
+The website for the Sunny Horizon Minecraft server (formerly TerraNova). React and Vite.
 
-## Edit Server Details
+## Edit the content
 
-Most placeholder content is in:
+All text lives in `src/data/`. The server's name is set once, at the top of `src/data/siteData.js`. See `CLAUDE.md` for what each file holds and the rules for this site.
 
-`src/data/siteData.js`
-
-Update this file to replace:
-
-- Server IP
-- Supported Minecraft version
-- Discord link
-- Wiki link
-- Staff names and roles
-- Roadmap item statuses
-- Feature and guide descriptions
-
-## Run Locally
+## Run locally
 
 ```bash
 npm install
 npm run dev
 ```
+
+`npm run dev` also shows hidden drafts, marked "Hidden draft".
 
 ## Build
 
@@ -31,4 +21,4 @@ npm run dev
 npm run build
 ```
 
-The production files will be generated in `dist/`.
+The production files are generated in `dist/`. Hidden drafts are left out.

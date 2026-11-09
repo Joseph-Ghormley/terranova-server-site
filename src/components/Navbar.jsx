@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { links } from "../data/siteData";
+import { links, serverName } from "../data/siteData";
 import logoImage from "../assets/sunny-horizons-logo.jpg";
 
 function PillIcon({ type }) {
@@ -35,11 +35,11 @@ export default function Navbar() {
 
   return (
     <header className="navbar">
-      <Link className="brand" to="/" aria-label="TerraNova home">
+      <Link className="brand" to="/" aria-label={`${serverName} home`}>
         <span className="brand-mark image-mark">
           <img src={logoImage} alt="" />
         </span>
-        <span>TerraNova</span>
+        <span>{serverName}</span>
       </Link>
       <div className="header-pills" aria-label="Server quick actions">
         <button className={`header-pill ${copied ? "copied" : ""}`} type="button" onClick={copyIp}>

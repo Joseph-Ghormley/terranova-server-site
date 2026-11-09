@@ -1,9 +1,24 @@
+// ── Names ────────────────────────────────────────────────────────────────
+// Change the server's name HERE, never in the text around the site.
+// serverName:    what the site calls the server (header, footer, page titles).
+// networkName:   the network name used in guides ("Sunny Horizons Network").
+// homeWorldName: the main world and spawn city, a PLACE ("TerraNova City",
+//                "the TerraNova Inn", "the waters of TerraNova"). Kept separate
+//                so the place can keep its name even if the server's changes.
+// When serverName and networkName are the same, fullName shows it once.
+export const serverName = "TerraNova";
+export const networkName = "Sunny Horizons";
+export const homeWorldName = "TerraNova";
+export const fullName = serverName === networkName ? serverName : `${serverName} / ${networkName}`;
+
 export const links = {
   serverIp: "sunnyhorizons.mc.gg",
   javaIp: "sunnyhorizons.mc.gg",
   bedrockIp: "sunnyhorizons.mc.gg",
   bedrockPort: "1475",
-  version: "[Add Supported Version Here]",
+  // Supported Minecraft version. Left empty until Bassor confirms it (Piece 1);
+  // nothing on the site shows it while it's empty.
+  version: "",
   discord: "https://discord.gg/DJP5u28m9k",
   discordMembers: "Discord Community",
   store: "https://sunnyhorizonsmc-store.tebex.io",
@@ -137,7 +152,7 @@ export const guides = [
 export const featureGroups = [
   {
     title: "Worlds and Portals",
-    text: "TerraNova uses world and portal systems to organize travel, dimensions, inventories, and future adventure areas.",
+    text: `${serverName} uses world and portal systems to organize travel, dimensions, inventories, and future adventure areas.`,
     systems: ["Multiverse", "Advanced-Portals", "Multiverse Inventories", "Multiverse Nether Portals", "Multiverse Portals"],
   },
   {

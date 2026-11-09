@@ -1,3 +1,5 @@
+import { homeWorldName } from "./siteData";
+
 export const wikiCategories = [
   {
     title: "Getting Started",
@@ -8,7 +10,7 @@ export const wikiCategories = [
   {
     title: "Worlds",
     slug: "worlds",
-    description: "TerraNova regions, roads, frontiers, and world locations.",
+    description: `${homeWorldName} regions, roads, frontiers, and world locations.`,
     featuredSlug: "worlds-overview",
   },
   {
