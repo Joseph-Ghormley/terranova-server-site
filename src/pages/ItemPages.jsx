@@ -17,7 +17,8 @@ function DraftBadge({ entry }) {
 }
 
 function ItemName({ item, className = "" }) {
-  return <McText className={className} text={item.name} gradient={item.nameGradient} />;
+  const upright = item.nameItalic === false ? " mc-upright" : "";
+  return <McText className={className + upright} text={item.name} gradient={item.nameGradient} />;
 }
 
 function SetCard({ set }) {

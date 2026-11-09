@@ -53,12 +53,12 @@ export function StaffPage() {
     >
       <div className="team-grid">
         {staff.map((member) => (
-          <article className="card team-card" key={member.handle}>
+          <article className="card team-card" key={member.name}>
             <StaffPicture member={member} />
             <div>
               <span className="small-label">{member.role}</span>
               <h2>{member.name}</h2>
-              <p className="team-handle">{member.handle}</p>
+              {member.handle && <p className="team-handle">{member.handle}</p>}
               {member.responsibilities && <p>{member.responsibilities}</p>}
             </div>
           </article>

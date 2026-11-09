@@ -298,7 +298,12 @@ export const rules = [
 // Staff: shown on the Staff page (/staff). From Bassor (Nov 9, 2026); more to come.
 // minecraftName: optional. When filled in, the page shows that player's Minecraft
 // head. Leave "" to show the first letter of their name instead.
+// handle: optional Discord handle; leave "" to hide it.
 export const staff = [
   { name: "Bassor", role: "Owner", handle: "@Bassor", minecraftName: "", responsibilities: "Vision, server direction, final decisions" },
   { name: "Kenweas", role: "Developer", handle: "@Kenweas", minecraftName: "", responsibilities: "Custom plugins, the website, testing" },
+  { name: "Caitlynn6633", role: "Head Builder", handle: "", minecraftName: "", responsibilities: "Leads the build team: spawn, portals and world design" },
+  { name: "Jade_Savage", role: "Builder", handle: "", minecraftName: "", responsibilities: "Spawn, portals and world design" },
+  { name: "xxDiimplezxx", role: "Builder", handle: "", minecraftName: "", responsibilities: "Spawn, portals and world design" },
+  { name: "Kiermandabomb", role: "Builder", handle: "", minecraftName: "", responsibilities: "Spawn, portals and world design" },
 ];

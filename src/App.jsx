@@ -184,6 +184,12 @@ function VotePage() {
   );
 }
 
+// The video's ID from a YouTube link (watch?v=..., youtu.be/..., or shorts/...).
+function youTubeId(url) {
+  const match = (url || "").match(/(?:v=|youtu\.be\/|shorts\/)([\w-]{11})/);
+  return match ? match[1] : null;
+}
+
 function HowToJoinPage() {
   const platformCards = videoGuides.map((guide) => (
     <Card className="video-guide-card" key={guide.slug}>
@@ -193,7 +199,17 @@ function HowToJoinPage() {
       </div>
       <h3>{guide.title}</h3>
       <p>{guide.description}</p>
-      <div className="video-placeholder">Video coming soon</div>
+      {youTubeId(guide.videoUrl) ? (
+        // A thumbnail that opens the video on YouTube. (Embedded players can be blocked
+        // by the video's owner or the browser, so we link out instead.)
+        <a className="video-link" href={guide.videoUrl} target="_blank" rel="noopener noreferrer">
+          <img src={`https://i.ytimg.com/vi/${youTubeId(guide.videoUrl)}/hqdefault.jpg`} alt="" loading="lazy" />
+          <span className="video-play" aria-hidden="true">▶</span>
+          <span className="video-link-label">Watch on YouTube</span>
+        </a>
+      ) : (
+        <div className="video-placeholder">Video coming soon</div>
+      )}
       <Link className="learn-more" to={`/how-to-join?platform=${guide.platform.toLowerCase()}`}>Read guide</Link>
     </Card>
   ));
@@ -236,7 +252,7 @@ function HowToJoinPage() {
             <p className="eyebrow">Console Guides</p>
             <h2>Choose Your Platform</h2>
           </div>
-          <p>Videos are intentionally left blank until the final console walkthroughs are recorded.</p>
+          <p>Step-by-step videos for joining from a console.</p>
         </div>
         <div className="video-guide-grid">{platformCards}</div>
       </section>

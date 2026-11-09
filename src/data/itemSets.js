@@ -40,4 +40,30 @@ export const itemSets = [
     archived: false,
     hidden: false,
   },
+  {
+    slug: "ethereal-drifter-set",
+    name: "Ethereal Drifter Set",
+    season: "Ethereal Drifter",
+    description:
+      "Star-touched gear for explorers: an elytra, four netherite armor pieces, a grappling hook and a spear.",
+    notes: [
+      "Anyone holding these items can use them.",
+      "The **Wings of Eternity** and the **Ethereal Heartguard** both go in the chest slot, so you wear one or the other.",
+      "All 7 items can only be repaired on the **Eternal Anvil**.",
+      "**PvP combat** lasts **30 seconds** after you hit, or are hit by, another player (arrows, tridents, TNT and harmful potions count too). A red name alone doesn't count, and dying ends it.",
+    ],
+    archived: false,
+    hidden: false,
+  },
+  {
+    slug: "vein-mining-tools",
+    name: "Vein Mining Tools",
+    season: "Tools",
+    description: "The Excavator and the Lumberjaxe: tools that break a whole ore vein or a whole tree at once.",
+    notes: [
+      "Unlike most custom items, these can be enchanted and repaired on a **normal anvil**.",
+    ],
+    archived: false,
+    hidden: false,
+  },
 ];
