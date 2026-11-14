@@ -2623,3 +2623,32 @@ nav a.active {
 .update-sections .wiki-article-section + .wiki-article-section {
   margin-top: 1.4rem;
 }
+
+/* Ranks page */
+.ranks-notes p { margin: 0 0 0.6rem; line-height: 1.6; }
+.ranks-notes p:last-child { margin-bottom: 0; }
+.ranks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+.rank-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  border-top: 4px solid var(--rank-color);
+}
+.rank-head { display: flex; align-items: baseline; justify-content: space-between; gap: 0.6rem; }
+.rank-name { margin: 0; color: var(--rank-color); font-size: 1.35rem; }
+.rank-name.gradient { -webkit-background-clip: text; background-clip: text; color: transparent; }
+.rank-price { color: var(--gold); font-weight: 900; font-size: 1.2rem; white-space: nowrap; }
+.rank-store-name { margin: -0.4rem 0 0; color: var(--muted); font-size: 0.85rem; }
+.rank-facts { display: grid; gap: 0.35rem; margin: 0; }
+.rank-facts div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.5rem; }
+.rank-facts dt { color: var(--rank-color); font-weight: 800; }
+.rank-facts dd { margin: 0; }
+.rank-perks { margin: 0; padding-left: 1.1rem; line-height: 1.55; color: var(--muted); }
+.rank-perks li { margin-bottom: 0.25rem; }
+.rank-perks strong { color: var(--text); }
+.rank-buy { margin-top: auto; align-self: flex-start; }

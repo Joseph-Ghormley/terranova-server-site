@@ -61,15 +61,15 @@ export const systemGuides = [
           columns: ["Rank", "Embers", "Star Fragments", "Dragon Eggs"],
           rows: [
             ["Desert Nomad", "0", "1", "0"],
-            ["Forest Ranger", "1", "0", "0"],
-            ["Sea Mariner", "1", "0", "0"],
-            ["Nether Traveler", "1", "0", "0"],
-            ["End Voyager", "1", "0", "1"],
-            ["Ethereal Drifter (its own bonus)", "0", "1", "1"],
+            ["Forest Ranger", "1", "1", "0"],
+            ["Sea Mariner", "2", "1", "0"],
+            ["Nether Traveler", "3", "1", "0"],
+            ["End Voyager", "4", "1", "1"],
+            ["Ethereal Drifter", "4", "2", "2"],
           ],
         },
         body: [
-          "**Ethereal Drifters always get every lower rank's bonus too**, on top of their own. That's **4 Embers, 2 Star Fragments and 2 Dragon Eggs** a day from ranks alone.",
+          "These are the **daily totals** from your rank. Each rank includes every lower rank's bonus. See all rank perks on the [Ranks](/ranks) page.",
           "If you lose a rank, its bonus is removed. Seasonal perks and elixirs are never removed.",
         ],
       },
@@ -380,6 +380,7 @@ export const systemGuides = [
         body: [
           "There's **no limit** on how many tabs you can have, and tabs are never taken away.",
           "Each Ender Tab Elixir has an ID, and you can only use **one per ID**. A second one with the same ID does nothing.",
+          "**Wild Endertab Elixir:** adds 1 tab. It comes from the **Wild Crate**, or from the [store](https://sunnyhorizonsmc-store.tebex.io/category/elixirs).",
         ],
       },
     ],
@@ -431,6 +432,7 @@ export const systemGuides = [
         body: [
           "A Repair Elixir **permanently** adds one more weekly repair charge. They come from events, and the **Guild Repair Elixir** is sold by the Guild Courier at Glory 7.",
           "Each Repair Elixir has an ID, and you can only use **one per ID**. A second one with the same ID does nothing.",
+          "**Wild Repair Elixir:** one more weekly repair charge. It comes from the **Wild Crate**, or from the [store](https://sunnyhorizonsmc-store.tebex.io/category/elixirs).",
         ],
       },
     ],
@@ -464,6 +466,16 @@ export const systemGuides = [
         body: [
           "The Auction House also has NPCs who sell some [Original Items](/items/original-items): **Torbjorn**, **Ogren**, **SwordSmith**, **Aldric** and **ToolSmith**. Each item's page says who sells it.",
           "The [Excavator and Lumberjaxe](/items/vein-mining-tools) are also sold by an NPC at the Auction House.",
+        ],
+      },
+      {
+        heading: "Crates",
+        commands: ["/warp Auction-House"],
+        body: [
+          "The **Vote, Wild, Epic and Legendary** crates are on the **second floor** of the Auction House (**/warp Auction-House**).",
+          "**Soul** crates are in the air gap above the sunken city.",
+          "Epic and Legendary crates hold items from the spawn traders. The Vote crate has a small chance of giving a rank-up.",
+          "Keys come from voting, events, [Forgotten Souls](/wiki/forgotten-souls), the Guild Courier and more, or from the [store](https://sunnyhorizonsmc-store.tebex.io/category/crate-keys).",
         ],
       },
     ],

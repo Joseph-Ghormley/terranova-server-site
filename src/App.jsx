@@ -8,7 +8,7 @@ import CopyButton from "./components/CopyButton";
 import RichText from "./components/RichText";
 import { NotFoundPage, PageShell } from "./components/PageShell";
 import { ItemPage, ItemSetPage, ItemsIndexPage } from "./pages/ItemPages";
-import { RulesPage, StaffPage } from "./pages/InfoPages";
+import { RanksPage, RulesPage, StaffPage } from "./pages/InfoPages";
 import CombatEffectsPage from "./pages/CombatEffectsPage";
 import { fullName, links, networkName, serverName } from "./data/siteData";
 import { homeNavigationCards } from "./data/homeContent";
@@ -615,6 +615,7 @@ export default function App() {
         <Route path="/how-to-join" element={<HowToJoinPage />} />
         <Route path="/rules" element={<RulesPage />} />
         <Route path="/staff" element={<StaffPage />} />
+        <Route path="/ranks" element={<RanksPage />} />
         <Route path="/warps" element={<Navigate to="/wiki?category=warps&article=warp-overview" replace />} />
         <Route path="/warps/:slug" element={<Navigate to="/wiki?category=warps&article=warp-overview" replace />} />
         <Route path="/items" element={<ItemsIndexPage />} />

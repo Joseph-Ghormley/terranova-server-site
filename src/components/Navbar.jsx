@@ -70,6 +70,7 @@ export default function Navbar() {
         <NavLink to="/wiki?category=warps&article=warp-overview" className={() => (inWarps ? "active" : "")}>Warps</NavLink>
         <NavLink to="/items">Items</NavLink>
         <NavLink to="/events">Events</NavLink>
+        <NavLink to="/ranks">Ranks</NavLink>
         <NavLink to="/rules">Rules</NavLink>
       </nav>
     </header>

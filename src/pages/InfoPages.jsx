@@ -1,4 +1,6 @@
 import { PageShell } from "../components/PageShell";
+import RichText from "../components/RichText";
+import { ranks, ranksStoreUrl } from "../data/ranks";
 import { links, rules, serverName, staff } from "../data/siteData";
 
 export function RulesPage() {
@@ -63,6 +65,61 @@ export function StaffPage() {
               <h2>{member.name}</h2>
               {member.responsibilities && <p>{member.responsibilities}</p>}
             </div>
+          </article>
+        ))}
+      </div>
+    </PageShell>
+  );
+}
+
+export function RanksPage() {
+  return (
+    <PageShell
+      eyebrow="Community"
+      title="Ranks"
+      intro={`Every ${serverName} rank is yours for life, and each one includes all the perks of the ranks below it.`}
+    >
+      <div className="card ranks-notes">
+        <p>
+          <strong>Ranks don't have to be bought.</strong> Opening the Vote crate has a small chance of giving you a rank-up.
+          Everything on the store can also be earned in game.
+        </p>
+        <p>
+          Ranks are bought on the{" "}
+          <a className="rich-link" href={ranksStoreUrl} target="_blank" rel="noopener noreferrer">server store</a>,
+          which handles checkout and gives you the rank in game. Kits include every lower rank's kit too.
+        </p>
+      </div>
+      <div className="ranks-grid">
+        {ranks.map((rank) => (
+          <article className="card rank-card" key={rank.slug} id={rank.slug} style={{ "--rank-color": rank.color }}>
+            <header className="rank-head">
+              <h2
+                style={
+                  rank.gradient
+                    ? { backgroundImage: `linear-gradient(90deg, ${rank.gradient[0]}, ${rank.gradient[1]})` }
+                    : undefined
+                }
+                className={rank.gradient ? "rank-name gradient" : "rank-name"}
+              >
+                {rank.name}
+              </h2>
+              <span className="rank-price">{rank.price}</span>
+            </header>
+            {rank.storeName && <p className="rank-store-name">Called "{rank.storeName}" on the store.</p>}
+            <dl className="rank-facts">
+              <div><dt>Homes</dt><dd>{rank.homes}</dd></div>
+              <div><dt>Daily rewards</dt><dd>{rank.daily}</dd></div>
+              <div><dt>Kit</dt><dd>{rank.kit}</dd></div>
+            </dl>
+            <ul className="rank-perks">
+              {rank.perks.map((perk) => (
+                <li key={perk}><RichText text={perk} /></li>
+              ))}
+            </ul>
+            <a className="btn primary rank-buy" href={ranksStoreUrl} target="_blank" rel="noopener noreferrer">
+              Buy on the store
+            </a>
           </article>
         ))}
       </div>

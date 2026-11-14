@@ -10,6 +10,7 @@ export default function Footer() {
       </div>
       <nav className="footer-links" aria-label="More pages">
         <Link to="/rules">Rules</Link>
+        <Link to="/ranks">Ranks</Link>
         <Link to="/staff">Staff</Link>
         <Link to="/vote">Vote</Link>
         <a href={links.discord} target="_blank" rel="noopener noreferrer">Discord</a>
