@@ -61,7 +61,6 @@ export function StaffPage() {
             <div>
               <span className="small-label">{member.role}</span>
               <h2>{member.name}</h2>
-              {member.handle && <p className="team-handle">{member.handle}</p>}
               {member.responsibilities && <p>{member.responsibilities}</p>}
             </div>
           </article>

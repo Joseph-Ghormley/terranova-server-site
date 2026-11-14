@@ -165,7 +165,7 @@ export const featureGroups = [
   {
     title: "Economy and Rewards",
     text: "Shops, rewards, crates, voting, and player progression help survival play feel active without replacing creativity.",
-    systems: ["Vault", "Shopkeepers", "ExcellentCrates", "VotingPlugin", "LootChest", "PinataParty", "Tebex"],
+    systems: ["Vault", "Shopkeepers", "Soul, Epic and Legendary Crates", "VotingPlugin", "LootChest", "PinataParty", "Tebex"],
   },
   {
     title: "Custom Items and Content",
@@ -298,11 +298,12 @@ export const rules = [
 // Staff: shown on the Staff page (/staff). From Bassor (Nov 9, 2026); more to come.
 // minecraftName: optional. When filled in, the page shows that player's Minecraft
 // head. Leave "" to show the first letter of their name instead.
-// handle: optional Discord handle; leave "" to hide it.
+// handle: kept for the data shape only. No Discord handles on the site at all
+// (Bassor, Form 3, Nov 13, 2026: "to protect us from scammers"). Not shown.
 // picture: optional image in public/staff/ (e.g. "/staff/bassor.png"); used before minecraftName.
 export const staff = [
-  { name: "Bassor", role: "Owner", handle: "@Bassor", picture: "/staff/bassor.gif", minecraftName: "", responsibilities: "Vision, server direction, final decisions" },
-  { name: "Kenweas", role: "Developer", handle: "@Kenweas", picture: "/staff/kenweas.gif", minecraftName: "", responsibilities: "Custom plugins, the website, testing" },
+  { name: "Bassor", role: "Owner", handle: "", picture: "/staff/bassor.gif", minecraftName: "", responsibilities: "Vision, server direction, Plugin development" },
+  { name: "Kenweas", role: "Developer", handle: "", picture: "/staff/kenweas.gif", minecraftName: "", responsibilities: "Custom plugins, the website, testing" },
   { name: "KodamaBird", role: "System Admin", handle: "", picture: "/staff/kodamabird.gif", minecraftName: "", responsibilities: "Keeps the server and its systems running" },
   { name: "Jade_Savage", role: "Admin", handle: "", picture: "/staff/jade_savage.gif", minecraftName: "", responsibilities: "Server operations and player support" },
   { name: "Caitlynn6633", role: "Building Coordinator", handle: "", picture: "/staff/caitlynn6633.gif", minecraftName: "", responsibilities: "Leads the build team: spawn, portals and world design" },

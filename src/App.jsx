@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import StatusBadge from "./components/StatusBadge";
 import { Card } from "./components/Card";
 import CopyButton from "./components/CopyButton";
+import RichText from "./components/RichText";
 import { NotFoundPage, PageShell } from "./components/PageShell";
 import { ItemPage, ItemSetPage, ItemsIndexPage } from "./pages/ItemPages";
 import { RulesPage, StaffPage } from "./pages/InfoPages";
@@ -457,6 +458,8 @@ function searchWiki(query) {
       ]),
     ]
       .join(" ")
+      .replace(/\*\*/g, "")
+      .replace(/\[([^\]]+)\]\([^)\s]+\)/g, "$1")
       .toLowerCase();
     return words.every((word) => text.includes(word));
   });
@@ -499,7 +502,7 @@ function WikiArticleSections({ article, className }) {
                               <CopyButton value={cell} label="Copy" compact />
                             </span>
                           ) : (
-                            cell
+                            <RichText text={cell} />
                           )}
                         </td>
                       ))}
@@ -509,7 +512,7 @@ function WikiArticleSections({ article, className }) {
               </table>
             </div>
           )}
-          {section.body.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          {section.body.map((paragraph) => <p key={paragraph}><RichText text={paragraph} /></p>)}
         </section>
       ))}
     </article>
@@ -549,6 +552,12 @@ function DirectoryPage({ eyebrow, title, intro, items: directoryItems, type }) {
       <div className="directory-grid">
         {directoryItems.map((item) => (
           <Link className="link-card" to={`/${type}/${item.slug}`} key={item.slug}>
+            {item.date && (
+              <span className="link-card-date">
+                {item.date}
+                {item.version ? ` · Version ${item.version}` : ""}
+              </span>
+            )}
             <span className="link-card-title">{item.title}</span>
             <span className="link-card-text">{item.description || item.summary}</span>
             <span className="link-card-cta">Read More</span>
@@ -569,9 +578,26 @@ function DetailPage({ collection, eyebrow }) {
 
   return (
     <PageShell eyebrow={eyebrow} title={item.title} intro={item.description || item.summary}>
+      <nav className="item-breadcrumb" aria-label="Breadcrumb">
+        <Link to="/updates">Events and Updates</Link>
+        <span aria-hidden="true">›</span>
+        <span>{item.title}</span>
+      </nav>
       <Card>
-        <StatusBadge status={item.status} />
-        <p>{item.body || item.description || item.summary}</p>
+        <div className="update-meta">
+          {item.date && (
+            <span>
+              {item.date}
+              {item.version ? ` · Version ${item.version}` : ""}
+            </span>
+          )}
+          <StatusBadge status={item.status} />
+        </div>
+        {item.sections ? (
+          <WikiArticleSections article={item} className="update-sections" />
+        ) : (
+          <p>{item.body || item.description || item.summary}</p>
+        )}
       </Card>
     </PageShell>
   );

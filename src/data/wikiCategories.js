@@ -38,6 +38,12 @@ export const wikiCategories = [
     featuredSlug: "guilds-events-and-pvp",
   },
   {
+    title: "Server Systems",
+    slug: "server-systems",
+    description: "Daily and weekly rewards, auras, Ender Tabs, the Eternal Anvil, profiles and more.",
+    featuredSlug: "daily-and-weekly-rewards",
+  },
+  {
     title: "Updates and Archive",
     slug: "updates-archive",
     description: "Seasonal updates, changelog notes, and archived content.",

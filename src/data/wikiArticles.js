@@ -1,4 +1,5 @@
 import { homeWorldName, networkName, serverName } from "./siteData";
+import { systemGuides } from "./systemGuides";
 
 const mainCityGateSections = [
   {
@@ -583,7 +584,7 @@ export const wikiArticles = [
           rows: [
             [
               "/guild create <Name> <TAG>",
-              "Creates a new Guild and Guild Tag. Tags can be up to 4 characters and appear as a prefix next to your name.",
+              "Creates a new Guild and Guild Tag. Tags can be up to 5 letters or numbers (no spaces or symbols), must be unique, and appear as a prefix next to your name.",
               "5 Dragon Eggs",
             ],
             ["/guild tag <NewTAG>", "Changes your Guild Tag.", "Guild Master — 10 Dragon Eggs"],
@@ -592,7 +593,8 @@ export const wikiArticles = [
               "Upgrades your Guild, increasing member capacity, alliance capacity, Guild Storage, and other Guild features.",
               "Elder+ — 64 Dragon Eggs",
             ],
-            ["/guild storage", "Opens the Guild's paged storage.", "Guild Members"],
+            ["/guild storage", "Opens the Guild's storage. Use /guild storage 2 for the second page.", "Guild Members"],
+            ["/guild home", "Teleports you to the Guild Home.", "Guild Members"],
             ["/guild chat", "Toggles Guild-only chat mode.", "Guild Members"],
             ["/guild chat <message>", "Sends a message to Guild members and allies.", "Guild Members"],
             ["/guild invite <player>", "Invites a player to join your Guild.", "Elder+"],
@@ -610,7 +612,7 @@ export const wikiArticles = [
             ["/guild kick <player>", "Removes a player from the Guild.", "Elder+"],
             ["/guild disband", "Permanently disbands the Guild.", "Guild Master"],
             ["/guild courier", "Spawns a Guild Courier.", "See Guild Glory"],
-            ["/guild courier delete", "Removes your active Guild Courier.", "Guild Members"],
+            ["/guild courier delete", "Removes the nearest Guild Courier within 10 blocks.", "Elder+"],
             ["/guild info <TAG>", "Displays information about a Guild.", "Everyone"],
             [
               "/guild accept",
@@ -627,11 +629,50 @@ export const wikiArticles = [
         ],
       },
       {
-        heading: "Guild Storage",
-        commands: ["/guild storage"],
+        heading: "Guild Ranks",
+        table: {
+          columns: ["Rank", "Limit", "Can do"],
+          rows: [
+            ["Guild Master", "1 per Guild", "Everything. The only one who can promote, demote, change the tag, transfer or disband."],
+            ["Elder", "Up to 3", "Invite, kick regular members, upgrade the Guild, manage alliances, set the Guild Home, place Couriers"],
+            ["Member", "The rest of the Guild", "Use Guild Storage, Guild chat and the Guild Home"],
+          ],
+        },
         body: [
-          "Guild Storage provides shared storage for Guild members.",
-          "Bedrock Warning: There have been known issues where Guild Masters using Bedrock Edition may experience Guild Storage deleting itself. Until this issue is resolved, Bedrock players are strongly advised not to use Guild Storage.",
+          "The Guild Master **can't leave** the Guild. They have to transfer it or disband it first.",
+        ],
+      },
+      {
+        heading: "Guild Levels",
+        table: {
+          columns: ["Level", "Max members", "Usable storage slots", "Storage pages"],
+          rows: [
+            ["1", "5", "27", "1"],
+            ["2", "8", "36", "1"],
+            ["3", "11", "45", "1"],
+            ["4", "14", "52", "1"],
+            ["5", "17", "61", "2"],
+            ["6", "20", "70", "2"],
+            ["7", "23", "79", "2"],
+            ["8", "26", "88", "2"],
+            ["9", "29", "97", "2"],
+            ["10", "32", "104", "2"],
+          ],
+        },
+        body: [
+          "Guilds start at level 1 and max out at level 10. Each upgrade costs **64 Dragon Eggs** (576 Dragon Eggs from level 1 to 10) and adds **3 member slots** and more storage.",
+          "From level 4 up, the two bottom corners of each storage page are page buttons, so a few slots go to the buttons.",
+        ],
+      },
+      {
+        heading: "Guild Storage",
+        commands: ["/guild storage", "/guild storage 2"],
+        body: [
+          "Guild Storage is a shared chest every Guild member can open. If your Guild has two pages, use /guild storage 2 for the second.",
+          "**Open slots** are the ones your Guild level pays for. Everything in them is saved.",
+          "**Black \"Locked\" panes** are slots past your Guild's limit. Upgrading the Guild unlocks more.",
+          "**Bottom corners** are page buttons. An arrow goes to the other page; a black \"No more pages\" pane means there isn't one.",
+          "**Rebuilt on Oct 29, 2026:** storage now saves at every Guild level, on Java and Bedrock. If an item ever ends up in a locked slot, it's moved into a free open slot so it's saved.",
         ],
       },
       {
@@ -640,6 +681,7 @@ export const wikiArticles = [
           `Guilds can compete in special events throughout ${homeWorldName}. These events put Guilds against one another for rewards, recognition, and Guild Glory.`,
           "Currently, there are two Guild Events, with more planned for the future.",
           "Plunder and Prowl alternate between each other and take place at 7:00 PM PST.",
+          "Both events affect your Guild's Glory. See Guild Glory below.",
         ],
       },
       {
@@ -688,7 +730,22 @@ export const wikiArticles = [
         ],
       },
       {
-        heading: "Rewards",
+        heading: "Plunder Rewards",
+        table: {
+          columns: ["Place", "Rewards"],
+          rows: [
+            ["1st", "22 Dragon Eggs, 8 Nether Stars, 2 Legendary or Soul Keys, 3 Legendary Components, 4 Epic Keys"],
+            ["2nd", "15 Dragon Eggs, 5 Nether Stars, 3 Legendary Components, 4 Epic Keys"],
+            ["3rd", "10 Dragon Eggs, 3 Nether Stars, 2 Epic Keys"],
+            ["4th and below", "8 Dragon Eggs"],
+          ],
+        },
+        body: [
+          "Mercenaries get their own rewards.",
+        ],
+      },
+      {
+        heading: "Prowl Rewards",
         body: [
           "1st Place",
           "● 1× Soul Key",
@@ -703,8 +760,17 @@ export const wikiArticles = [
           "● 2× Epic Keys",
           "● 5× Dragon Eggs",
           "● 4× Nether Stars",
-          "Participation",
+          "4th and below",
           "● 3× Dragon Eggs",
+          "Whoever kills the Evil Horse during Prowl also gets 1 Legendary Key.",
+        ],
+      },
+      {
+        heading: "Who Gets the Rewards",
+        body: [
+          "When an event ends, **one player per Guild** receives the Guild's rewards: the Guild Master if online, otherwise an online Elder, otherwise any online member. They can share them out with the Guild.",
+          "**If nobody from your Guild is online** when the event ends, the rewards are saved and given to your Guild Master or an Elder **the next time they log in**, with a chat message explaining it. Saved rewards never expire. A Mercenary's rewards wait for that Mercenary.",
+          "Event rewards don't go to [Claim Items](/wiki/claim-items). If your inventory is full, they drop at your feet.",
         ],
       },
       {
@@ -720,8 +786,9 @@ export const wikiArticles = [
         body: [
           "● Placing Top 3 in a Guild Event awards 1 Glory.",
           "● At 3 Glory, Guild Masters and Elders unlock access to Guild Couriers.",
-          "● Failing to participate in 3 consecutive Guild Events causes Glory to begin decaying.",
-          "● Glory decays at a rate of 1 Glory per day once decay begins.",
+          "● Each Glory level from 4 to 10 adds one more trade to your Guild Courier.",
+          "● Missing 3 Guild Events in a row costs 1 Glory for every event you keep missing after that.",
+          "● Taking part in any Guild Event resets the missed-event count.",
         ],
       },
       {
@@ -734,10 +801,32 @@ export const wikiArticles = [
           "Use:",
           "/guild courier",
           "to spawn your Guild Courier.",
-          "The default Guild Courier limit is 1, but this can be increased to a maximum of 3 through Guild progression.",
+          "The default Guild Courier limit is 1. Each Courier Emblem (sold at Glory 10) raises it by 1, up to a maximum of 3.",
+          "Only Elders and the Guild Master can place or remove a Courier. It can't be hurt, pushed or blown up, and its name shows your Guild tag.",
+          "The Courier has one trade for every Glory level from 3 up to your Guild's Glory, and its trades rotate every 7 days. At Glory 10, an extra trade (128 Dragon Eggs) refreshes all the trades right away.",
           "To remove an active Courier, use:",
           "/guild courier delete",
           "Build your Guild's Glory, unlock better trades, and keep your Guild active to maintain access to its Courier.",
+        ],
+      },
+      {
+        heading: "Guild Courier Trades",
+        table: {
+          columns: ["Glory", "Possible trades (one is picked each rotation)"],
+          rows: [
+            ["3", "8 Netherite Blocks (1 egg), 16 Diamond Blocks (1 egg), [Experience Elixir](/items/consumables/experience-elixir) (1 egg)"],
+            ["4", "[Murky Vial](/items/consumables/murky-vial) (3), [Alchemillia Vol. 1](/items/consumables/alchemillia-vol-1) (5), [Book of Enlightenment](/items/consumables/book-of-enlightenment) (10), a random [Auction House item](/items/auction-house) (10)"],
+            ["5", "Common Aura Cookie (10), a random Auction House item (10), [Epic Crate Key Voucher](/items/consumables/epic-crate-key-voucher) (8)"],
+            ["6", "Uncommon Aura Cookie (32), a [Legendary Component](/items/legendary-components) (40), [Alchemillia Vol. 2](/items/consumables/alchemillia-vol-2) (40), [Moving Box Voucher](/items/consumables/moving-box-voucher) (40)"],
+            ["7", "Rare Aura Cookie (48), Guild Repair Elixir (96), [Amorphous Mass](/items/original-items/amorphous-mass) (128)"],
+            ["8", "Epic Aura Cookie (64), [Soul Ashes](/items/consumables/soul-ashes) (32), a random Mob Spawner (64)"],
+            ["9", "[Regicide](/items/original-items/regicide) (Warden Feces + Dragon's Milk), [Diabolus Shako](/items/original-items/diabolus-shako) (Beskar + Fugu), Aegis Bundle (2 Magic Conch)"],
+            ["10", "Legendary Aura Cookie (128), Guild Ember Elixir (128), Guild Endertab Elixir (128), Courier Emblem (128)"],
+          ],
+        },
+        body: [
+          "Prices are in Dragon Eggs, except the Glory 9 trades, which cost [Legendary Components](/items/legendary-components).",
+          "**Guild Repair Elixir:** +1 weekly [Eternal Anvil](/wiki/eternal-anvil) repair. **Guild Ember Elixir:** +1 Ember in your [daily rewards](/wiki/daily-and-weekly-rewards). **Guild Endertab Elixir:** +1 [Ender Tab](/wiki/ender-tabs). **Aegis Bundle:** the [Aegis of the Legion](/items/auction-house/aegis-of-the-legion) and an [Aegis Spellbook](/items/consumables/aegis-spellbook). **Courier Emblem:** +1 Courier, up to 3 (it stops appearing once you have 3).",
         ],
       },
     ],
@@ -746,13 +835,32 @@ export const wikiArticles = [
     title: "Updates and Archive",
     slug: "updates-and-archive",
     category: "Updates and Archive",
-    summary: `Seasonal and archived ${serverName} update notes.`,
-    status: "Needs Verification",
+    summary: `Every ${serverName} update, newest first, with what changed in each.`,
+    status: "Active",
     sections: [
       {
-        heading: "Initial Update Topics",
-        body: ["Summer 2026, Glory and Glamour, Guilds Update, and Grinchmas 2025 are planned update cards."],
+        heading: "Recent Updates",
+        body: [
+          "[Autumn 2026](/updates/autumn-2026) (Version 1.6, Nov 7, 2026): the Harvestkeeper Set and the Ethereal Drifter Set.",
+          "[Fixes and Balance](/updates/fixes-and-balance-1-5) (Version 1.5, Nov 2, 2026): fixes for items, Forgotten Souls, Red Name PvP, guilds and auras.",
+          "[Ethereal Drifter Update](/updates/ethereal-drifter-update) (Version 1.4, Nov 2, 2026): the Daily Rewards menu, /weekly and /namecolor.",
+          "[Vein Mining Tools](/updates/vein-mining-tools) (Version 1.3, Oct 31, 2026): the Excavator and Lumberjaxe, rebuilt.",
+          "[Día de los Muertos 2026](/updates/dia-de-los-muertos-2026) (Version 1.2, Oct 31, 2026): seven new items.",
+          "[Moving Box Fix](/updates/moving-box-fix) (Version 1.1, Oct 31, 2026).",
+          "[Guild Storage Update](/updates/guild-storage-update) (Oct 29, 2026): storage saves at every guild level.",
+        ],
+      },
+      {
+        heading: "Older Updates",
+        body: [
+          "[Summer 2026](/updates/summer-2026): fifteen summer items and the Sunscorched Zealot.",
+          "[Glory and Glamour](/updates/glory-and-glamour): Guild Glory, the Guild Courier and auras.",
+          "[Guilds Update](/updates/guilds-update): guilds, alliances, Plunder and Prowl.",
+          "[Grinchmas 2025](/updates/grinchmas-2025): the Christmas 2025 items.",
+          "See all of them on the [Events and Updates](/updates) page.",
+        ],
       },
     ],
   },
+  ...systemGuides,
 ];

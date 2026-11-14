@@ -2594,3 +2594,32 @@ nav a.active {
   background: rgba(215, 173, 75, 0.08);
   object-fit: contain;
 }
+
+/* Update notes: date and version on cards and pages */
+.link-card-date {
+  margin-bottom: 0.4rem;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.update-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.update-sections .wiki-article-section:first-child {
+  margin-top: 0;
+}
+
+.update-sections .wiki-article-section + .wiki-article-section {
+  margin-top: 1.4rem;
+}
